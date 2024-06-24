@@ -1,9 +1,10 @@
-// URL de tu hoja de cálculo publicada en formato CSV
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?output=csv';
+const baseSheetUrl = 'https://docs.google.com/spreadsheets/d/e/tu-id/pub?output=csv';
 
-// Función para cargar los datos de Google Sheets
 async function loadPrices() {
     try {
+        // Agregar un parámetro único para evitar el caché del navegador
+        const sheetUrl = `${baseSheetUrl}&nocache=${new Date().getTime()}`;
+        
         const response = await fetch(sheetUrl);
         const data = await response.text();
         
@@ -25,6 +26,4 @@ async function loadPrices() {
         console.error('Error al cargar los precios:', error);
     }
 }
-
-// Llamar a la función para cargar los precios cuando la página se cargue
-document.addEventListener('DOMContentLoaded', loadPrices);
+;
