@@ -4,8 +4,6 @@ const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC
 // Función para cargar los datos de Google Sheets
 async function loadPrices() {
     try {
-        // Agregar un parámetro único para evitar el caché del navegador
-        const sheetUrl = `${baseSheetUrl}&nocache=${new Date().getTime()}`;
         
         const response = await fetch(sheetUrl);
         const data = await response.text();
