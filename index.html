@@ -1,41 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Productos</title>
+    <title>Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="logo">Logo de la Marca</div>
         <nav>
-            <a href="#productos">Productos</a>
-            <a href="#contacto">Contacto</a>
+            <ul>
+                <li><a href="#carousel">Productos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="carousel">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 1">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 2">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 3">
+    <section class="carousel" id="carousel">
+        <img src="https://i.imgur.com/tuImagen1.jpg" alt="Imagen 1">
+        <img src="https://i.imgur.com/tuImagen2.jpg" alt="Imagen 2">
+        <img src="https://i.imgur.com/tuImagen3.jpg" alt="Imagen 3">
     </section>
 
     <section class="promociones">
-        <p>¡Envío gratis en todo Mendoza!</p>
+        <p>Envío gratis en todo Mendoza</p>
     </section>
 
-    <section id="productos" class="productos">
-        <h2>Nuestros Productos</h2>
-        <div id="productos-grid" class="productos-grid">
-            <!-- Aquí se insertarán las tarjetas de productos dinámicamente -->
-        </div>
+    <section class="productos" id="productos">
+        <!-- Los productos se insertarán aquí -->
     </section>
 
     <footer>
-        <p>Redes sociales y información de contacto</p>
+        <p>Redes sociales e información de contacto</p>
     </footer>
 
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
