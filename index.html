@@ -3,42 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Productos</title>
+    <title>Tienda de Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="logo">Logo de la empresa</div>
+        <div class="logo">Logo de la Marca</div>
         <nav>
-            <ul>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#informacion">Información</a></li>
-            </ul>
+            <a href="#productos">Productos</a>
+            <a href="#contacto">Contacto</a>
         </nav>
     </header>
+
+    <section class="carousel">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 1">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 2">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 3">
+    </section>
+
+    <section class="promociones">
+        <p>¡Envío gratis en todo Mendoza!</p>
+    </section>
+
     <section id="productos" class="productos">
-        <div class="producto" id="producto-1">
-            <h2>Producto 1</h2>
-            <p>Precio: <span class="precio" id="precio-1"></span> $</p>
-        </div>
-        <div class="producto" id="producto-2">
-            <h2>Producto 2</h2>
-            <p>Precio: <span class="precio" id="precio-2"></span> $</p>
-        </div>
-        <div class="producto" id="producto-3">
-            <h2>Producto 3</h2>
-            <p>Precio: <span class="precio" id="precio-3"></span> $</p>
+        <h2>Nuestros Productos</h2>
+        <div id="productos-grid" class="productos-grid">
+            <!-- Aquí se insertarán las tarjetas de productos dinámicamente -->
         </div>
     </section>
+
     <footer>
-        <div class="contacto">
-            <h2>Información de contacto</h2>
-            <p>Dirección: Calle Falsa 123, Ciudad, País</p>
-            <p>Teléfono: (123) 456-7890</p>
-            <p>Email: contacto@empresa.com</p>
-        </div>
+        <p>Redes sociales y información de contacto</p>
     </footer>
-    <!-- Incluye el script después del contenido -->
+
     <script src="script.js"></script>
 </body>
 </html>
