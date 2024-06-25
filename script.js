@@ -1,5 +1,5 @@
 // URL del documento de Google Sheets en formato CSV
-const baseSheetUrl = 'https://docs.google.com/spreadsheets/d/e/TU_ID_DE_HOJA/pub?output=csv';
+const baseSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv';
 
 // Función para cargar los productos desde Google Sheets
 async function loadProducts() {
