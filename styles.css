@@ -1,4 +1,4 @@
-/* Estilo general para la página.1 */
+/* Estilo general para la página.2 */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -95,6 +95,7 @@ header {
     height: 100%;
     text-align: center;
     backface-visibility: hidden;
+    transition: transform 0.8s;
 }
 
 .product-card-front,
