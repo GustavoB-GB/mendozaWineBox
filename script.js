@@ -1,62 +1,51 @@
-// Iniciamos Google Charts
-google.charts.load('current', { 'packages': ['corechart', 'table'] });
-google.charts.setOnLoadCallback(loadProducts);
+// scripts.js
 
-function loadProducts() {
-    const query = new google.visualization.Query('https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv');
-    query.send(handleQueryResponse);
-}
+$(document).ready(function() {
+    function fetchSheetData() {
+        const sheetID = 'TUSHEETID';
+        const apiKey = 'TUTOKEN';
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/Sheet1?key=${apiKey}`;
 
-function handleQueryResponse(response) {
-    if (response.isError()) {
-        console.error('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
-        return;
+        $.get(url, function(data) {
+            const rows = data.values.slice(1); // Ignorar la primera fila (encabezados)
+
+            rows.forEach(row => {
+                const [nombre, precio, imagenURL, descripcion] = row;
+
+                const productoHTML = `
+                    <div class="producto">
+                        <div class="producto-inner">
+                            <div class="producto-front">
+                                <img src="${imagenURL}" alt="${nombre}">
+                                <div class="info">
+                                    <span>${nombre}</span>
+                                    <span>${precio}</span>
+                                </div>
+                            </div>
+                            <div class="producto-back">
+                                <p>${descripcion}</p>
+                                <div class="info">
+                                    <span>${nombre}</span>
+                                    <span>${precio}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                $('#productos').append(productoHTML);
+            });
+        });
     }
 
-    const data = response.getDataTable();
-    const container = document.getElementById('productos');
-    
-    for (let i = 0; i < data.getNumberOfRows(); i++) {
-        const name = data.getValue(i, 0);
-        const price = data.getValue(i, 1);
-        const imageUrl = data.getValue(i, 2);
-        const description = data.getValue(i, 3);
+    fetchSheetData();
 
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-
-        const productCardInner = document.createElement('div');
-        productCardInner.className = 'product-card-inner';
-
-        const productCardFront = document.createElement('div');
-        productCardFront.className = 'product-card-front';
-        productCardFront.innerHTML = `
-            <img src="${imageUrl}" alt="${name}">
-            <div class="product-details">
-                <span>${name}</span>
-                <span>${price}</span>
-            </div>
-        `;
-
-        const productCardBack = document.createElement('div');
-        productCardBack.className = 'product-card-back';
-        productCardBack.innerHTML = `<p>${description}</p>`;
-
-        productCardInner.appendChild(productCardFront);
-        productCardInner.appendChild(productCardBack);
-        productCard.appendChild(productCardInner);
-        container.appendChild(productCard);
-    }
-}
-
-// Carousel rotation cada 5 segundos
-let currentIndex = 0;
-const images = document.querySelectorAll('.carousel img');
-
-function rotateCarousel() {
-    images[currentIndex].style.display = 'none';
-    currentIndex = (currentIndex + 1) % images.length;
-    images[currentIndex].style.display = 'block';
-}
-
-setInterval(rotateCarousel, 5000);
+    // Carousel Auto-Rotate
+    let currentImageIndex = 0;
+    const images = $('.carousel img');
+    setInterval(() => {
+        images.eq(currentImageIndex).fadeOut();
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        images.eq(currentImageIndex).fadeIn();
+    }, 5000);
+});
