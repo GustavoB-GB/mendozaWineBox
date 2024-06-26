@@ -2,6 +2,15 @@ document.addEventListener("DOMContentLoaded", function() {
     // URL de la hoja de Google Sheets en formato CSV
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
+    // Elementos de la ventana modal
+    const modal = document.getElementById("product-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalName = document.getElementById("modal-name");
+    const modalDescription = document.getElementById("modal-description");
+    const modalPrice = document.getElementById("modal-price");
+    const contactButton = document.getElementById("contact-button");
+    const closeModal = document.querySelector(".close");
+
     // Función para cargar datos desde Google Sheets
     fetch(sheetUrl)
         .then(response => response.text())
@@ -19,36 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const productCard = document.createElement("div");
                 productCard.classList.add("product-card");
 
-                const productCardInner = document.createElement("div");
-                productCardInner.classList.add("product-card-inner");
-
-                const productCardFront = document.createElement("div");
-                productCardFront.classList.add("product-card-front");
-
-                const productCardBack = document.createElement("div");
-                productCardBack.classList.add("product-card-back");
-
-                productCardFront.innerHTML = `
+                productCard.innerHTML = `
                     <img src="${image}" alt="${name}">
-                    <div class="product-details">
-                        <span class="product-name">${name}</span>
-                        <span class="product-price">${price}</span>
-                    </div>
-                `;
-
-                productCardBack.innerHTML = `
-                    <div class="product-description">${description}</div>
-                    <div class="product-details">
-                        <span class="product-name">${name}</span>
-                        <span class="product-price">${price}</span>
-                    </div>
-                `;
-
-                productCardInner.appendChild(productCardFront);
-                productCardInner.appendChild(productCardBack);
-                productCard.appendChild(productCardInner);
-                productList.appendChild(productCard);
-            });
-        })
-        .catch(error => console.error("Error al cargar los datos:", error));
-});
+                    <div
