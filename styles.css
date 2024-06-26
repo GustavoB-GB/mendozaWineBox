@@ -149,10 +149,27 @@ header {
     cursor: pointer;
 }
 
+/* Ajustes específicos para la imagen en la ventana modal */
 .modal-image {
-    max-width: 600px;
-    height: auto;
+    width: 100%; /* Usar el 100% del contenedor */
+    height: 0; /* Altura inicial cero */
+    padding-bottom: 100%; /* Mantiene la proporción cuadrada */
+    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
     margin-bottom: 20px;
+    display: block;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .modal-content {
+        width: 90%; /* Reduce el ancho de la modal en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%; /* Un poco más ancho para tabletas */
+    }
 }
 
 .contact-button {
