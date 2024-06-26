@@ -1,9 +1,9 @@
-/* Estilo general para la página  */
+/* Estilo general para la página */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #f4f4f9; /* Fondo claro general */
 }
 
 header {
@@ -73,14 +73,14 @@ header {
 
 .product-card {
     perspective: 1000px;
-    margin: 10px; /* Añade un margen alrededor de cada tarjeta */
-    width: 250px; /* Ancho de la tarjeta */
-    height: 350px; /* Alto de la tarjeta */
+    margin: 15px; /* Añade un margen alrededor de cada tarjeta */
+    width: 300px; /* Ancho de la tarjeta */
+    height: 400px; /* Alto de la tarjeta */
     display: inline-block;
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-    background-color: #ddd; /* Fondo gris para la tarjeta */
+    background-color: #fff; /* Fondo blanco para la tarjeta */
 }
 
 .product-card-inner {
@@ -103,11 +103,12 @@ header {
     height: 100%;
     backface-visibility: hidden;
     border-radius: 10px; /* Mantiene los bordes redondeados */
-    background-color: #f1f1f1; /* Fondo gris claro */
+    background-color: #f4f4f9; /* Fondo gris claro */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .product-card-back {
@@ -116,29 +117,30 @@ header {
 
 .product-card img {
     width: 100%;
-    height: 200px; /* Altura fija para la imagen */
-    object-fit: cover; /* Mantiene la proporción de la imagen */
-    border-bottom: 1px solid #ddd;
+    height: 250px; /* Altura de la imagen más grande para una tarjeta más cuadrada */
+    object-fit: contain; /* Mantiene la proporción de la imagen y la centra */
+    margin-bottom: 10px;
 }
 
 .product-details {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
-    background-color: #ccc; /* Fondo gris para la parte inferior */
+    background-color: #ccc; /* Fondo gris claro para la parte inferior */
 }
 
 .product-name,
 .product-price {
     font-size: 16px;
     font-weight: bold;
+    margin: 0 5px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
 }
 
 .product-description {
     padding: 10px;
     font-size: 14px;
-    text-align: left;
-    background-color: #f1f1f1; /* Fondo gris claro para la descripción */
+    text-align: center; /* Texto centrado en la descripción */
+    background-color: #f4f4f9; /* Fondo gris claro para la descripción */
 }
 
 footer {
@@ -146,4 +148,9 @@ footer {
     color: #fff;
     text-align: center;
     padding: 20px;
+}
+
+/* Estilo para el fondo durante la rotación */
+.product-card-inner {
+    background-color: #f4f4f9;
 }
