@@ -2,37 +2,37 @@
 
 $(document).ready(function() {
     function fetchSheetData() {
-        const sheetID = 'TUSHEETID';
-        const apiKey = 'TUTOKEN';
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/Sheet1?key=${apiKey}`;
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv';
 
-        $.get(url, function(data) {
-            const rows = data.values.slice(1); // Ignorar la primera fila (encabezados)
-
+        $.get(csvUrl, function(data) {
+            // Convertir el CSV a JSON
+            const rows = data.split('\n').slice(1);
             rows.forEach(row => {
-                const [nombre, precio, imagenURL, descripcion] = row;
+                const [nombre, precio, imagenURL, descripcion] = row.split(',');
 
+                // Crear la estructura de la tarjeta de producto
                 const productoHTML = `
                     <div class="producto">
                         <div class="producto-inner">
                             <div class="producto-front">
-                                <img src="${imagenURL}" alt="${nombre}">
+                                <img src="${imagenURL.trim()}" alt="${nombre.trim()}">
                                 <div class="info">
-                                    <span>${nombre}</span>
-                                    <span>${precio}</span>
+                                    <span>${nombre.trim()}</span>
+                                    <span>${precio.trim()}</span>
                                 </div>
                             </div>
                             <div class="producto-back">
-                                <p>${descripcion}</p>
+                                <p>${descripcion.trim()}</p>
                                 <div class="info">
-                                    <span>${nombre}</span>
-                                    <span>${precio}</span>
+                                    <span>${nombre.trim()}</span>
+                                    <span>${precio.trim()}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 `;
 
+                // Añadir la tarjeta al contenedor de productos
                 $('#productos').append(productoHTML);
             });
         });
