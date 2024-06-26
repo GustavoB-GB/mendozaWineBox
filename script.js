@@ -40,11 +40,13 @@ $(document).ready(function() {
     fetchSheetData();
 
     // Carousel Auto-Rotate
+    /*
     let currentImageIndex = 0;
     const images = $('.carousel img');
     setInterval(() => {
         images.eq(currentImageIndex).fadeOut();
         currentImageIndex = (currentImageIndex + 1) % images.length;
         images.eq(currentImageIndex).fadeIn();
-    }, 5000000);
+    }, 5000);
+    */
 });
