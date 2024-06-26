@@ -80,7 +80,7 @@ header {
     border-radius: 10px; /* Bordes redondeados */
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-    background-color: #fff; /* Fondo blanco para la tarjeta */
+    background-color: #f4f4f9; /* Fondo gris claro para la tarjeta */
 }
 
 .product-card-inner {
@@ -117,16 +117,19 @@ header {
 
 .product-card img {
     width: 100%;
-    height: 250px; /* Altura de la imagen más grande para una tarjeta más cuadrada */
-    object-fit: contain; /* Mantiene la proporción de la imagen y la centra */
-    margin-bottom: 10px;
+    height: 250px; /* Altura de la imagen */
+    object-fit: cover; /* La imagen cubre todo el área */
+    margin: 0; /* Sin márgenes */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .product-details {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px 0;
-    background-color: #ccc; /* Fondo gris claro para la parte inferior */
+    background-color: #f4f4f9; /* Mantiene el mismo color que el fondo de la tarjeta */
 }
 
 .product-name,
