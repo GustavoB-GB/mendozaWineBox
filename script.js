@@ -46,5 +46,5 @@ $(document).ready(function() {
         images.eq(currentImageIndex).fadeOut();
         currentImageIndex = (currentImageIndex + 1) % images.length;
         images.eq(currentImageIndex).fadeIn();
-    }, 5000);
+    }, 5000000);
 });
