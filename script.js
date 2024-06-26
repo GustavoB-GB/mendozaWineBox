@@ -1,76 +1,54 @@
-// URL de la hoja de cálculo de Google Sheets en formato CSV
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv';
+document.addEventListener("DOMContentLoaded", function() {
+    // URL de la hoja de Google Sheets en formato CSV
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
-// Función para cargar datos desde la hoja de cálculo
-async function loadProducts() {
-    try {
-        const response = await fetch(sheetUrl);
-        const csvData = await response.text();
+    // Función para cargar datos desde Google Sheets
+    fetch(sheetUrl)
+        .then(response => response.text())
+        .then(data => {
+            const productList = document.getElementById("product-list");
+            const rows = data.split("\n").slice(1);
+            rows.forEach(row => {
+                const columns = row.split(",");
+                const name = columns[0];
+                const price = columns[1];
+                const image = columns[2];
+                const description = columns[3];
 
-        // Convertir CSV a un array de objetos
-        const data = csvToJson(csvData);
+                // Crear la tarjeta de producto
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
 
-        // Renderizar los productos en la página
-        renderProducts(data);
-    } catch (error) {
-        console.error('Error al cargar los datos de la hoja de cálculo:', error);
-    }
-}
+                const productCardInner = document.createElement("div");
+                productCardInner.classList.add("product-card-inner");
 
-// Función para convertir CSV a JSON
-function csvToJson(csv) {
-    const lines = csv.split('\n');
-    const result = [];
+                const productCardFront = document.createElement("div");
+                productCardFront.classList.add("product-card-front");
 
-    // Obtener los encabezados de las columnas
-    const headers = lines[0].split(',');
+                const productCardBack = document.createElement("div");
+                productCardBack.classList.add("product-card-back");
 
-    // Convertir cada línea en un objeto JSON
-    for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        const currentLine = lines[i].split(',');
-
-        headers.forEach((header, index) => {
-            obj[header.trim()] = currentLine[index].trim();
-        });
-
-        result.push(obj);
-    }
-
-    return result;
-}
-
-// Función para renderizar los productos en la página
-function renderProducts(products) {
-    const productList = document.getElementById('product-list');
-    productList.innerHTML = '';
-
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-
-        productCard.innerHTML = `
-            <div class="product-card-inner">
-                <div class="product-card-front">
-                    <img src="${product.Imagen}" alt="${product.Nombre}">
+                productCardFront.innerHTML = `
+                    <img src="${image}" alt="${name}">
                     <div class="product-details">
-                        <div class="product-name">${product.Nombre}</div>
-                        <div class="product-price">$${product.Precio}</div>
+                        <span class="product-name">${name}</span>
+                        <span class="product-price">${price}</span>
                     </div>
-                </div>
-                <div class="product-card-back">
-                    <div class="product-description">${product.Descripcion}</div>
+                `;
+
+                productCardBack.innerHTML = `
+                    <div class="product-description">${description}</div>
                     <div class="product-details">
-                        <div class="product-name">${product.Nombre}</div>
-                        <div class="product-price">$${product.Precio}</div>
+                        <span class="product-name">${name}</span>
+                        <span class="product-price">${price}</span>
                     </div>
-                </div>
-            </div>
-        `;
+                `;
 
-        productList.appendChild(productCard);
-    });
-}
-
-// Iniciar la carga de productos al cargar la página
-document.addEventListener('DOMContentLoaded', loadProducts);
+                productCardInner.appendChild(productCardFront);
+                productCardInner.appendChild(productCardBack);
+                productCard.appendChild(productCardInner);
+                productList.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error("Error al cargar los datos:", error));
+});
