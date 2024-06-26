@@ -100,7 +100,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0; /* Añade más espacio entre la imagen y los detalles */
+    padding: 5px 0 0 0; /* Añade más espacio entre la imagen y los detalles */
     background-color: #f4f4f9; /* Mantiene el mismo color que el fondo de la tarjeta */
 }
 
@@ -150,9 +150,8 @@ header {
 }
 
 .modal-image {
-    width: 100%;
+    max-width: 600px;
     height: auto;
-   /* max-height: 400px;  Limita la altura máxima de la imagen */
     margin-bottom: 20px;
 }
 
