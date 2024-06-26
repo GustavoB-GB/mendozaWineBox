@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // URL de la hoja de Google Sheets en formato CSV
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
-    // Elementos de la ventana modal
+    // Elementos de la ventana modal 1
     const modal = document.getElementById("product-modal");
     const modalImage = document.getElementById("modal-image");
     const modalName = document.getElementById("modal-name");
