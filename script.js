@@ -11,24 +11,28 @@ $(document).ready(function() {
 
                 // Crear la estructura de la tarjeta de producto
                 const productoHTML = `
-                    <div class="producto">
-                        <div class="producto-inner">
-                            <div class="producto-front">
-                                <img src="${imagenURL.trim()}" alt="${nombre.trim()}">
-                                <div class="info">
-                                    <span>${nombre.trim()}</span>
-                                    <span>${precio.trim()}</span>
+                    <div class="product-card">
+                        <div class="product-card-inner">
+                            <div class="product-card-front">
+                                <img src="link_a_la_imagen" alt="Imagen del Producto">
+                                <div class="product-details">
+                                    <div class="product-name">Nombre del Producto</div>
+                                    <div class="product-price">$XX.XX</div>
                                 </div>
                             </div>
-                            <div class="producto-back">
-                                <p>${descripcion.trim()}</p>
-                                <div class="info">
-                                    <span>${nombre.trim()}</span>
-                                    <span>${precio.trim()}</span>
+                            <div class="product-card-back">
+                                <div class="product-description">
+                                    <!-- Aquí va la descripción del producto -->
+                                    Descripción detallada del producto.
+                                </div>
+                                <div class="product-details">
+                                    <div class="product-name">Nombre del Producto</div>
+                                    <div class="product-price">$XX.XX</div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 `;
 
                 // Añadir la tarjeta al contenedor de productos
