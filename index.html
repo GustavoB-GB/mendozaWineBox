@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
+    <title>Catálogo de Productos</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
+        <div class="logo">Logo de la Marca</div>
         <nav>
             <ul>
-                <li><a href="#carousel">Productos</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="carousel" id="carousel">
-        <img src="https://i.imgur.com/tuImagen1.jpg" alt="Imagen 1">
-        <img src="https://i.imgur.com/tuImagen2.jpg" alt="Imagen 2">
-        <img src="https://i.imgur.com/tuImagen3.jpg" alt="Imagen 3">
+    <section class="carousel">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 1">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 2">
+        <img src="https://via.placeholder.com/1500x500" alt="Imagen 3">
     </section>
 
-    <section class="promociones">
+    <section class="promo">
         <p>Envío gratis en todo Mendoza</p>
     </section>
 
-    <section class="productos" id="productos">
-        <!-- Los productos se insertarán aquí -->
+    <section id="productos" class="productos">
+        <!-- Productos se insertarán aquí mediante JavaScript -->
     </section>
 
     <footer>
-        <p>Redes sociales e información de contacto</p>
+        <div class="contact-info">
+            <p>Redes Sociales y Contacto</p>
+        </div>
     </footer>
 
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="script.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
