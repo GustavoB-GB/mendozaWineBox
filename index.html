@@ -3,42 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Productos</title>
+    <title>Ejemplo de Tarjetas de Productos</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Estilo para el contenedor de productos */
+        #productSection {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        /* Estilo para cada tarjeta de producto */
+        .card {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            width: 250px;
+            margin: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo para la parte frontal y trasera de la tarjeta */
+        .card .front, .card .back {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Estilos responsive para pantallas pequeñas */
+        @media (max-width: 768px) {
+            #productSection {
+                justify-content: center;
+            }
+
+            .card {
+                width: 90%;
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">Logo de la Marca</div>
-        <nav>
-            <ul>
-                <li><a href="#productos">Productos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <section class="carousel">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 1">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 2">
-        <img src="https://via.placeholder.com/1500x500" alt="Imagen 3">
-    </section>
-
-    <section class="promo">
-        <p>Envío gratis en todo Mendoza</p>
-    </section>
-
-    <section id="productos" class="productos">
-        <!-- Productos se insertarán aquí mediante JavaScript -->
-    </section>
-
-    <footer>
-        <div class="contact-info">
-            <p>Redes Sociales y Contacto</p>
+    <!-- Sección de Productos -->
+    <div id="productSection">
+        <!-- Ejemplo de tarjeta de producto -->
+        <div class="card">
+            <div class="front">
+                <img src="https://via.placeholder.com/200" alt="Producto 1">
+                <p>Nombre del Producto</p>
+                <p>$100</p>
+            </div>
+            <div class="back">
+                <p>Descripción del Producto</p>
+                <p>Nombre del Producto</p>
+                <p>$100</p>
+            </div>
         </div>
-    </footer>
+        <!-- Puedes agregar más tarjetas aquí -->
+    </div>
 
-    
     <script src="script.js"></script>
 </body>
 </html>
+
