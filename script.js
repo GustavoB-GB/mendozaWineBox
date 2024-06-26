@@ -1,65 +1,58 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // URL de la hoja de Google Sheets en formato CSV
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
+document.addEventListener('DOMContentLoaded', async () => {
+    const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
-    // Elementos de la ventana modal 1
-    const modal = document.getElementById("product-modal");
-    const modalImage = document.getElementById("modal-image");
-    const modalName = document.getElementById("modal-name");
-    const modalDescription = document.getElementById("modal-description");
-    const modalPrice = document.getElementById("modal-price");
-    const contactButton = document.getElementById("contact-button");
-    const closeModal = document.querySelector(".close");
+    const response = await fetch(sheetURL);
+    const data = await response.text();
 
-    // Función para cargar datos desde Google Sheets
-    fetch(sheetUrl)
-        .then(response => response.text())
-        .then(data => {
-            const productList = document.getElementById("product-list");
-            const rows = data.split("\n").slice(1);
-            rows.forEach(row => {
-                const columns = row.split(",");
-                const name = columns[0];
-                const price = columns[1];
-                const image = columns[2];
-                const description = columns[3];
+    const products = Papa.parse(data, {
+        header: true,
+        skipEmptyLines: true
+    }).data;
 
-                // Crear la tarjeta de producto
-                const productCard = document.createElement("div");
-                productCard.classList.add("product-card");
+    const productContainer = document.getElementById("product-container");
 
-                productCard.innerHTML = `
-                    <img src="${image}" alt="${name}">
-                    <div class="product-details">
-                        <span class="product-name">${name}</span>
-                        <span class="product-price">${price}</span>
-                    </div>
-                `;
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <img src="${product.Image}" alt="${product.Name}">
+            <div class="card-content">
+                <h2>${product.Name}</h2>
+                <p class="card-price">${product.Price}</p>
+                <p class="card-description">${product.Description}</p>
+            </div>
+        `;
+        card.addEventListener('click', function() {
+            const modal = document.getElementById("myModal");
+            const modalImage = document.getElementById("modalImage");
+            const modalProductName = document.getElementById("modalProductName");
+            const modalProductDescription = document.getElementById("modalProductDescription");
+            const modalProductPrice = document.getElementById("modalProductPrice");
+            const modalWhatsAppButton = document.getElementById("modalWhatsAppButton");
 
-                // Al hacer click en la tarjeta, mostrar la ventana modal con los detalles del producto
-                productCard.addEventListener("click", () => {
-                    modalImage.src = image;
-                    modalName.textContent = name;
-                    modalDescription.textContent = description;
-                    modalPrice.textContent = `Precio: ${price}`;
-                    contactButton.href = `https://wa.me/?text=Estoy%20interesado%20en%20el%20producto%20${name}`;
-                    modal.style.display = "block";
-                });
+            modalImage.src = product.Image;
+            modalProductName.textContent = product.Name;
+            modalProductDescription.textContent = product.Description;
+            modalProductPrice.textContent = product.Price;
+            modalWhatsAppButton.href = `https://api.whatsapp.com/send?phone=XXXXXXXXXXX&text=Me%20interesa%20${encodeURIComponent(product.Name)}`;
 
-                productList.appendChild(productCard);
-            });
-        })
-        .catch(error => console.error("Error al cargar los datos:", error));
+            modal.style.display = "block";
+        });
+        productContainer.appendChild(card);
+    });
 
-    // Cerrar la ventana modal cuando se hace clic en la "x"
-    closeModal.onclick = function() {
+    // Cerrar la ventana modal al hacer clic en el botón de cierre (X)
+    const span = document.getElementsByClassName("close")[0];
+    span.addEventListener('click', function() {
+        const modal = document.getElementById("myModal");
         modal.style.display = "none";
-    }
+    });
 
-    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
-    window.onclick = function(event) {
+    // Cerrar la ventana modal al hacer clic fuera de la modal
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById("myModal");
         if (event.target == modal) {
             modal.style.display = "none";
         }
-    }
+    });
 });
