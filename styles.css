@@ -108,7 +108,7 @@ header {
 .product-price {
     font-size: 16px;
     font-weight: bold;
-    margin: 10px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
+    margin: 40px 20px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
 }
 
 .modal {
@@ -125,7 +125,7 @@ header {
 
 .modal-content {
     background-color: #fff;
-    margin: 5% auto;
+    margin: 2% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
