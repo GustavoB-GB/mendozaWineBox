@@ -30,4 +30,36 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 productCard.innerHTML = `
                     <img src="${image}" alt="${name}">
-                    <div
+                    <div class="product-details">
+                        <span class="product-name">${name}</span>
+                        <span class="product-price">${price}</span>
+                    </div>
+                `;
+
+                // Al hacer click en la tarjeta, mostrar la ventana modal con los detalles del producto
+                productCard.addEventListener("click", () => {
+                    modalImage.src = image;
+                    modalName.textContent = name;
+                    modalDescription.textContent = description;
+                    modalPrice.textContent = `Precio: ${price}`;
+                    contactButton.href = `https://wa.me/?text=Estoy%20interesado%20en%20el%20producto%20${name}`;
+                    modal.style.display = "block";
+                });
+
+                productList.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error("Error al cargar los datos:", error));
+
+    // Cerrar la ventana modal cuando se hace clic en la "x"
+    closeModal.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
