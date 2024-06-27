@@ -1,116 +1,101 @@
-/* Estilo general para la página.1 */
+/* General */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9; /* Fondo claro general */
+    background-color: #1c1c1c;
+    color: #f0f0f0;
 }
 
+/* Header */
 header {
     background-color: #333;
-    color: #fff;
     padding: 10px 0;
     text-align: center;
 }
 
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.navbar ul {
-    list-style: none;
+header h1 {
     margin: 0;
+    color: #f0f0f0;
+}
+
+nav ul {
+    list-style: none;
     padding: 0;
+    margin: 0;
     display: flex;
-}
-
-.navbar ul li {
-    margin: 0 10px;
-}
-
-.navbar ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.carousel {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    height: 400px;
-    position: relative;
-}
-
-.carousel-item {
-    min-width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-}
-
-.promo {
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 18px;
-}
-
-.product-section {
-    padding: 20px;
-    text-align: center;
-}
-
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
 
-.product-card {
-    width: 350px; /* Ancho de la tarjeta */
-    height: 430px; /* Alto de la tarjeta */
-    margin: 15px; /* Añade un margen alrededor de cada tarjeta */
-    display: inline-block;
-    border-radius: 10px; /* Bordes redondeados */
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
-    background-color: #f4f4f9; /* Fondo gris claro para la tarjeta */
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
+nav ul li {
+    margin: 0 15px;
 }
 
-.product-card:hover {
-    transform: scale(1.05); /* Aumenta el tamaño ligeramente al pasar el mouse */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Incrementa la sombra al pasar el mouse */
-}
-
-.product-card img {
-    width: 100%;
-    height: 70%; /* Incrementa el tamaño de la imagen */
-    object-fit: cover; /* La imagen cubre todo el área */
-    margin: 0; /* Sin márgenes */
-}
-
-.product-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 0 0 0; /* Añade más espacio entre la imagen y los detalles */
-    background-color: #f4f4f9; /* Mantiene el mismo color que el fondo de la tarjeta */
-}
-
-.product-name,
-.product-price {
-    font-size: 16px;
+nav ul li a {
+    color: #f0f0f0;
+    text-decoration: none;
     font-weight: bold;
-    margin: 40px 20px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
 }
 
+nav ul li a:hover {
+    color: #e6e6e6;
+}
+
+/* Sección de Productos */
+.product-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Tarjetas de Producto */
+.card {
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 20px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card h2 {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+
+.card-price {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+.card-description {
+    display: none; /* Oculto inicialmente */
+}
+
+/* Ventana Modal */
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
@@ -120,18 +105,38 @@ header {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    background-color: rgba(0,0,0,0.7);
 }
 
 .modal-content {
-    background-color: #fff;
-    margin: 2% auto;
+    background-color: #2e2e2e;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-width: 700px;
-    text-align: center;
+    max-width: 800px;
     border-radius: 10px;
+    text-align: center;
+    color: #f0f0f0;
+}
+
+.modal-image-container {
+    width: 100%;
+    padding-top: 100%; /* Proporción cuadrada */
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.modal-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .close {
@@ -144,63 +149,34 @@ header {
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding-top: 100%; /* Proporción cuadrada */
-    position: relative; /* Posiciona los hijos en relación al contenedor */
-    overflow: hidden; /* Esconde cualquier desbordamiento */
-    background-color: #f0f0f0; /* Fondo gris claro para asegurar que se vea algo mientras carga la imagen */
-}
-
-.modal-image {
-    position: absolute; /* Absolutamente posicionado dentro del contenedor */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ajusta la imagen para cubrir el contenedor sin distorsión */
-    display: block;
-}
-
-/* Estilos responsivos */
-@media (max-width: 600px) {
-    .modal-content {
-        width: 90%; /* Reduce el ancho de la modal en pantallas pequeñas */
-    }
-}
-
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95%; /* Un poco más ancho para tabletas */
-    }
-}
-
-.contact-button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #25D366; /* Color de WhatsApp */
     color: white;
     text-decoration: none;
+}
+
+.modal-description h2,
+.modal-description p {
+    margin: 10px 0;
+}
+
+#modalWhatsAppButton {
+    background-color: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
     border-radius: 5px;
-    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
 }
 
-.contact-button:hover {
-    background-color: #128C7E; /* Color más oscuro al pasar el mouse */
+#modalWhatsAppButton:hover {
+    background-color: #128C7E;
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
+/* Responsivo */
+@media screen and (max-width: 600px) {
+    .modal-content {
+        width: 95%;
+    }
 }
