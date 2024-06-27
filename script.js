@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         productContainer.appendChild(card);
     });
 
-    //1 Cerrar la ventana modal al hacer clic en el botón de cierre (X)
+    //2 Cerrar la ventana modal al hacer clic en el botón de cierre (X)
     const span = document.getElementsByClassName("close")[0];
     span.addEventListener('click', function() {
         const modal = document.getElementById("myModal");
