@@ -153,7 +153,7 @@ header {
     width: 100%;
     height: auto;
    /* max-height: 400px;  Limita la altura máxima de la imagen */
-    margin-bottom: 20px;
+    margin-bottom: -15px;
 }
 
 .contact-button {
