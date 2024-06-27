@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     modalName.textContent = name;
                     modalDescription.textContent = description;
                     modalPrice.textContent = `Precio: ${price}`;
-                    contactButton.href = `https://wa.me/?text=Estoy%20interesado%20en%20el%20producto%20${name}`;
+                    contactButton.href = `https://wa.me/5492616548208?text=Hola,%20me%20interesa%20el%20box%20${name}`;
                     modal.style.display = "block";
                 });
 
