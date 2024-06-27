@@ -1,12 +1,10 @@
-<!DOCTYPE html> <!-- 3 -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de Página de Productos</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-
 </head>
 <body>
     <header>
@@ -37,21 +35,17 @@
         <p>Redes sociales y información de contacto</p>
     </footer>
 
-<!-- Ventana modal -->
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="modal-image-container">
-      <img id="modalImage" class="modal-image" src="" alt="Producto">
+    <!-- Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="Producto" class="modal-image">
+            <h2 id="modal-name"></h2>
+            <p id="modal-description"></p>
+            <p id="modal-price"></p>
+            <a id="contact-button" href="#" target="_blank" class="contact-button">Contactar por WhatsApp</a>
+        </div>
     </div>
-    <div class="modal-description">
-      <h2 id="modalProductName">Nombre del producto</h2>
-      <p id="modalProductDescription">Descripción del producto</p>
-      <p id="modalProductPrice">Precio del producto</p>
-      <button id="modalWhatsAppButton">Contactar por WhatsApp</button>
-    </div>
-  </div>
-</div>
 
     <script src="script.js"></script>
 </body>
