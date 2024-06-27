@@ -73,7 +73,7 @@ header {
 
 .product-card {
     width: 350px; /* Ancho de la tarjeta */
-    height: 450px; /* Alto de la tarjeta */
+    height: 430px; /* Alto de la tarjeta */
     margin: 15px; /* Añade un margen alrededor de cada tarjeta */
     display: inline-block;
     border-radius: 10px; /* Bordes redondeados */
@@ -108,7 +108,7 @@ header {
 .product-price {
     font-size: 16px;
     font-weight: bold;
-    margin: 0 10px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
+    margin: 44px 20px; /* Añade un pequeño margen para que el texto no esté pegado al borde */
 }
 
 .modal {
@@ -125,7 +125,7 @@ header {
 
 .modal-content {
     background-color: #fff;
-    margin: 5% auto;
+    margin: 2% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
@@ -152,7 +152,7 @@ header {
 .modal-image {
     width: 100%;
     height: auto;
-    max-height: 400px; /* Limita la altura máxima de la imagen */
+   /* max-height: 400px;  Limita la altura máxima de la imagen */
     margin-bottom: 20px;
 }
 
