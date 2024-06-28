@@ -151,9 +151,8 @@ header {
 }
 
 .modal-image {
-
     height: auto;
-    max-height: 400px;  /*Limita la altura máxima de la imagen */
+    height: 500px;
     margin-bottom: -15px;
 }
 
