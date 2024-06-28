@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
+    setInterval(nextSlide, 7000); // Cambia de imagen cada 5 segundos
 
     showSlide(currentSlide); // Muestra la primera imagen inicialmente
 });
