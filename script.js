@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // URL de la hoja de Google Sheets en formato CSV.2
+    // URL de la hoja de Google Sheets en formato CSV
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
     // Elementos de la ventana modal
@@ -63,14 +63,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Funcionalidad del carrusel automático
+    // Funcionalidad del carrusel automático con transición suave
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-item');
     const totalSlides = slides.length;
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            slide.style.display = (i === index) ? 'block' : 'none';
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
         });
     }
 
