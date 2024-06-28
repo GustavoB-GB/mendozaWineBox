@@ -24,6 +24,15 @@ html{
     padding: 0 20px;
 }
 
+/* Botón de WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    cursor: pointer;
+}
+
 .navbar ul {
     list-style: none;
     margin: 0;
