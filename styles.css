@@ -257,6 +257,7 @@ html{
 }
 
 .footer-right img {
+    align-items: center;
     margin-right: 10px;
 }
 
