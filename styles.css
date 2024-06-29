@@ -281,8 +281,8 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(50% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
-        max-width: calc(50% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
