@@ -127,7 +127,7 @@ html{
 
 .product-details {
     padding: 10px;
-    text-align: center;
+    text-align: left;
     background-color: #f8f8f8; /* Asegura que el fondo sea del mismo color */
 }
 
@@ -138,6 +138,7 @@ html{
 
 .product-details .product-price {
     color: #555;
+    text-align: right; /* Alinea el precio a la derecha */
 }
 
 /* Efecto hover */
