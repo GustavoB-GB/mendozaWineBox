@@ -292,8 +292,8 @@ html{
 
 @media (max-width: 480px) {
     .product-card {
-        flex: 1 1 100%; /* Muestra 1 producto por fila en pantallas muy pequeñas */
-        max-width: 100%; /* Ajusta el tamaño de la tarjeta en pantallas muy pequeñas */
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
