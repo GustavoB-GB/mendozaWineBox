@@ -286,7 +286,7 @@ html{
     }
 
     .product-card img {
-        height: 150px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+        height: 190px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
@@ -297,7 +297,7 @@ html{
     }
 
     .product-card img {
-        height: 150px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
+        height: 190px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
     }
 }
 
