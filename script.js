@@ -1,3 +1,42 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Selección de elementos
+    const whatsappButton = document.getElementById('whatsapp-float');
+    const modal = document.querySelector('.modal');
+    const modalClose = document.querySelector('.modal-close');
+    const footer = document.querySelector('footer');
+
+    // Función para verificar si el botón debe mostrarse o no
+    function checkButtonVisibility() {
+        const footerRect = footer.getBoundingClientRect();
+        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
+
+        // Mostrar/ocultar el botón dependiendo de la visibilidad del footer
+        if (footerVisible) {
+            whatsappButton.style.display = 'none';
+        } else {
+            whatsappButton.style.display = 'block';
+        }
+    }
+
+    // Ocultar el botón de WhatsApp al abrir la ventana modal
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+            whatsappButton.style.display = 'none';
+        });
+    });
+
+    // Mostrar el botón de WhatsApp al cerrar la ventana modal
+    modalClose.addEventListener('click', () => {
+        whatsappButton.style.display = 'block';
+    });
+
+    // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
+    window.addEventListener('scroll', checkButtonVisibility);
+
+    // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
+    checkButtonVisibility();
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     // URL de la hoja de Google Sheets en formato CSV
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
