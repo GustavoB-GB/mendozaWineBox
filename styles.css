@@ -50,14 +50,13 @@ html{
     font-size: 16px;
 }
 
-/* Carousel */
 .carousel {
     display: flex;
     overflow: hidden;
     position: relative;
-    height: 400px; /* Puedes ajustar esta altura según necesites */
+    height: 680px; /* Ajustado a 680px */
     max-width: 100%;
-    background-color: #333; /* Fondo oscuro para evitar desbordamiento de imagen */
+    background-color: #333;
 }
 
 .carousel-item {
@@ -83,14 +82,20 @@ html{
     object-fit: cover; /* Mantiene la proporción de la imagen */
 }
 
-
-.promo {
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 18px;
+/* Contenedor del Carousel */
+.carousel-container {
+    margin-bottom: 0; /* Eliminar margen inferior si existe */
 }
+
+
+
+/* Sección Promo */
+.promo {
+    margin: 0; /* Eliminar cualquier margen */
+    padding: 20px 0; /* Ajustar padding si es necesario, puedes modificar según tu diseño */
+    background-color: #f8f8f8; /* Asegurar que el fondo esté alineado */
+}
+
 
 /* Contenedor de productos */
 #product-list {
@@ -119,10 +124,11 @@ html{
     margin: 0; /* Sin margen para que ocupe todo el espacio superior */
 }
 
+/* Estilo de las tarjetas de productos */
 .product-details {
-    padding: 10px;
-    text-align: center;
-    background-color: #f8f8f8; /* Asegura que el fondo sea del mismo color */
+    padding: 10px 20px; /* Ajusta los valores según sea necesario */
+    text-align: left; /* Alinea el texto a la izquierda */
+    background-color: #f8f8f8;
 }
 
 .product-details .product-name {
@@ -132,13 +138,14 @@ html{
 
 .product-details .product-price {
     color: #555;
+    margin-top: 5px; /* Añadir margen superior si es necesario */
 }
+
 
 /* Efecto hover */
 .product-card:hover {
     transform: scale(1.05);
 }
-
 
 .modal {
     display: none; /* Oculto por defecto */
