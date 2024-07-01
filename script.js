@@ -1,111 +1,110 @@
-// script.js
-
-// Identificar el índice del producto actual que se muestra en la modal
-let currentProductIndex = -1;
-let products = []; // Almacenar la lista de productos para la navegación
-
-// Cargar productos desde la API de Google Sheets
-async function loadProducts() {
-    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv');
-    const data = await response.text();
-    const rows = data.split('\n').slice(1);
-    products = rows.map(row => {
-        const [name, price, description, imageUrl] = row.split(',');
-        return { name, price, description, imageUrl };
-    });
-    renderProducts(products);
-}
-
-// Función para renderizar productos en la página
-function renderProducts(products) {
-    const productsContainer = document.getElementById('products-container');
-    productsContainer.innerHTML = ''; // Limpiar el contenedor antes de renderizar
-    products.forEach((product, index) => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('product-card');
-        productCard.innerHTML = `
-            <img src="${product.imageUrl}" alt="${product.name}">
-            <div class="product-details">
-                <h3>${product.name}</h3>
-                <p>Precio: $${product.price}</p>
-            </div>
-        `;
-        productCard.addEventListener('click', () => showModal(index));
-        productsContainer.appendChild(productCard);
-    });
-}
-
-// Función para mostrar la ventana modal de un producto específico
-function showModal(index) {
-    if (index < 0 || index >= products.length) return;
-    currentProductIndex = index;
-    const product = products[index];
-    document.getElementById('modal-image').src = product.imageUrl;
-    document.getElementById('modal-name').innerText = product.name;
-    document.getElementById('modal-description').innerText = product.description;
-    document.getElementById('modal-price').innerText = `Precio: $${product.price}`;
-    document.getElementById('contact-button').href = `https://wa.me/5492615707910?text=Estoy interesado en el producto ${product.name}`;
-    document.getElementById('product-modal').style.display = 'block';
-    document.querySelector('.whatsapp-float').style.display = 'none'; // Oculta el botón de WhatsApp flotante
-}
-
-// Función para cerrar la ventana modal
-function closeModal() {
-    document.getElementById('product-modal').style.display = 'none';
-    document.querySelector('.whatsapp-float').style.display = 'block'; // Muestra el botón de WhatsApp flotante
-}
-
-// Navegar al siguiente producto
-function nextProduct() {
-    if (currentProductIndex + 1 < products.length) {
-        showModal(currentProductIndex + 1);
-    }
-}
-
-// Navegar al producto anterior
-function previousProduct() {
-    if (currentProductIndex - 1 >= 0) {
-        showModal(currentProductIndex - 1);
-    }
-}
-
-// Evento de teclas para las flechas izquierda y derecha
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'ArrowRight') {
-        nextProduct();
-    } else if (event.key === 'ArrowLeft') {
-        previousProduct();
-    } else if (event.key === 'Escape') {
-        closeModal();
-    }
-});
-
-// Cerrar modal al hacer clic en el botón de cierre
-document.querySelector('.close').addEventListener('click', closeModal);
-
-// Cerrar modal al hacer clic fuera de ella
-window.onclick = function(event) {
-    if (event.target == document.getElementById('product-modal')) {
-        closeModal();
-    }
-}
-
-
-
-
-// Ocultar el botón de WhatsApp flotante al hacer scroll hasta el footer
-window.addEventListener('scroll', function() {
-    const whatsappButton = document.querySelector('.whatsapp-float');
+document.addEventListener('DOMContentLoaded', function() {
+    // Selección de elementos
+    const whatsappButton = document.getElementById('whatsapp-float');
+    const modal = document.getElementById('product-modal');
+    const modalClose = document.querySelector('.modal-close');
     const footer = document.querySelector('footer');
-    const footerRect = footer.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    
-    if (footerRect.top <= viewportHeight) {
-        whatsappButton.style.display = 'none';
-    } else {
-        whatsappButton.style.display = 'block';
-    }
-});
 
-// Cargar los productos al cargar la página
-loadProducts();
+    // Función para verificar si el botón debe mostrarse o no
+    function checkButtonVisibility() {
+        const footerRect = footer.getBoundingClientRect();
+        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
+
+        // Mostrar/ocultar el botón dependiendo de la visibilidad del footer
+        if (footerVisible) {
+            whatsappButton.style.display = 'none';
+        } else {
+            whatsappButton.style.display = 'flex';
+        }
+    }
+
+    // Ocultar el botón de WhatsApp al abrir la ventana modal
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+            whatsappButton.style.display = 'none';
+        });
+    });
+
+    // Mostrar el botón de WhatsApp al cerrar la ventana modal
+    modalClose.addEventListener('click', () => {
+        whatsappButton.style.display = 'flex';
+    });
+
+    // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
+    window.addEventListener('scroll', checkButtonVisibility);
+
+    // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
+    checkButtonVisibility();
+
+    // Variables para la navegación de modales
+    let currentProductIndex = 0;
+
+    // Función para encontrar el siguiente o anterior producto
+    function findNextProduct(currentIndex, direction) {
+        const products = document.querySelectorAll('.product-card');
+        let newIndex = (currentIndex + direction + products.length) % products.length;
+        return products[newIndex];
+    }
+
+    // Función para abrir el producto en la modal
+    function openProductModal(product) {
+        const modalImage = document.getElementById('modal-image');
+        const modalName = document.getElementById('modal-name');
+        const modalDescription = document.getElementById('modal-description');
+        const modalPrice = document.getElementById('modal-price');
+        const contactButton = document.getElementById('contact-button');
+        
+        const imgSrc = product.querySelector('img').src;
+        const name = product.querySelector('.product-name').innerText;
+        const description = product.getAttribute('data-description');
+        const price = product.querySelector('.product-price').innerText;
+
+        modalImage.src = imgSrc;
+        modalName.innerText = name;
+        modalDescription.innerText = description;
+        modalPrice.innerText = price;
+        contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20saber%20más%20sobre%20${encodeURIComponent(name)}.`;
+
+        modal.style.display = 'block';
+        currentProductIndex = Array.from(product.parentNode.children).indexOf(product);
+    }
+
+    // Añadir evento de teclado para cambiar entre productos
+    document.addEventListener('keydown', (event) => {
+        if (modal.style.display === 'block') {
+            if (event.key === 'ArrowLeft') {
+                // Moverse al producto anterior
+                const prevProduct = findNextProduct(currentProductIndex, -1);
+                openProductModal(prevProduct);
+            } else if (event.key === 'ArrowRight') {
+                // Moverse al siguiente producto
+                const nextProduct = findNextProduct(currentProductIndex, 1);
+                openProductModal(nextProduct);
+            }
+        }
+    });
+
+    // Cerrar la modal al hacer clic en el botón de cerrar
+    modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+        checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
+    });
+
+    // Lógica para el carrusel
+    let carouselIndex = 0;
+    const carouselImages = document.querySelectorAll('.carousel img');
+    
+    function showNextCarouselImage() {
+        carouselImages[carouselIndex].classList.remove('active');
+        carouselIndex = (carouselIndex + 1) % carouselImages.length;
+        carouselImages[carouselIndex].classList.add('active');
+    }
+    
+    // Cambiar imagen cada 5 segundos
+    setInterval(showNextCarouselImage, 5000);
+
+    // Añadir transición suave para el carrusel
+    carouselImages.forEach(image => {
+        image.style.transition = 'opacity 1s ease-in-out';
+    });
+});
