@@ -1,56 +1,78 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- 6 -->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página</title>
+    <title>Ejemplo de Página de Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Contenido de la página -->
+    <header>
+        <nav class="navbar">
+            <div class="logo"></div>
+            <ul>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Carrusel -->
     <div class="carousel">
-        <img src="img1.jpg" class="active" alt="Imagen 1">
-        <img src="img2.jpg" alt="Imagen 2">
-        <img src="img3.jpg" alt="Imagen 3">
+        <div class="carousel-item"><img src="encabezado.png"/></div>
+        <div class="carousel-item"><img src="encabezado1.png"/></div>
+        <div class="carousel-item"><img src="encabezado2.png"/></div>
     </div>
 
-    <!-- Productos -->
-    <div id="productos">
-        <div class="product-card" data-description="Descripción del producto 1">
-            <img src="product1.jpg" alt="Producto 1">
-            <div class="product-info">
-                <h3 class="product-name">Producto 1</h3>
-                <p class="product-price">$10.00</p>
-            </div>
+    <div class="promo">¡Envío gratis en el Gran Mendoza!</div>
+
+    <div id="productos" class="product-section">
+        <div class="product-list" id="product-list">
+            <!-- Aquí se insertarán los productos desde el script -->
         </div>
-        <!-- Más productos aquí -->
-    </div>
-
-    <!-- Modal -->
-    <div id="product-modal" class="modal">
-        <span class="modal-close">&times;</span>
-        <img id="modal-image" src="" alt="Imagen del Producto">
-        <h2 id="modal-name"></h2>
-        <p id="modal-description"></p>
-        <p id="modal-price"></p>
-        <a id="contact-button" href="#">Contactar</a>
     </div>
 
     <!-- Footer -->
-    <footer>
-        <!-- Contenido del footer -->
+    <footer id="contacto" class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <!-- Aquí puedes añadir el texto largo con información sobre la empresa -->
+                <p>
+                    Mendoza Wine Box se dedica a ofrecer las mejores experiencias en degustación de vinos. 
+                    Desde selecciones cuidadosamente curadas hasta recomendaciones personalizadas, nos aseguramos 
+                    de que cada cliente disfrute de una experiencia única. Nuestro objetivo es llevar la riqueza 
+                    y la diversidad del vino mendocino directamente a tu puerta.
+                </p>
+            </div>
+            <div class="footer-right">
+                 <a href="https://wa.me/5492616548208?text=Hola,%20me%20gustaría%20saber%20más%20sobre%20sus%20productos." target="_blank" class="footer-whatsapp">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 30px; height: 30px;">
+                    WhatsApp
+                </a>
+                <a href="https://www.instagram.com/Mendoza_wine_box/" target="_blank" class="footer-instagram">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width: 30px; height: 30px;">
+                    Instagram
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Botón de WhatsApp -->
-    <div id="whatsapp-float">
-        <a href="https://wa.me/5492615707910" target="_blank">
-            <img src="whatsapp-icon.png" alt="WhatsApp">
-        </a>
+    <!-- Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="Producto" class="modal-image">
+            <h2 id="modal-name"></h2>
+            <p id="modal-description"></p>
+            <p id="modal-price"></p>
+            <a id="contact-button" href="#" target="_blank" class="contact-button">Contactar por WhatsApp</a>
+        </div>
     </div>
 
-    <!-- Archivo JavaScript -->
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
+
+    <a href="https://wa.me/5492615707910?text=Hola,%20me%20interesa%20saber%20más%20sobre%20sus%20productos." target="_blank" class="whatsapp-float">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 50px; height: 50px;">
+    </a>
+    
 </body>
 </html>
