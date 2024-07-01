@@ -1,89 +1,111 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // URL de la hoja de Google Sheets en formato CSV
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
+// script.js
 
-    // Elementos de la ventana modal
-    const modal = document.getElementById("product-modal");
-    const modalImage = document.getElementById("modal-image");
-    const modalName = document.getElementById("modal-name");
-    const modalDescription = document.getElementById("modal-description");
-    const modalPrice = document.getElementById("modal-price");
-    const contactButton = document.getElementById("contact-button");
-    const closeModal = document.querySelector(".close");
+// Identificar el índice del producto actual que se muestra en la modal
+let currentProductIndex = -1;
+let products = []; // Almacenar la lista de productos para la navegación
 
-    // Función para cargar datos desde Google Sheets
-    fetch(sheetUrl)
-        .then(response => response.text())
-        .then(data => {
-            const productList = document.getElementById("product-list");
-            const rows = data.split("\n").slice(1);
-            rows.forEach(row => {
-                const columns = row.split(",");
-                const name = columns[0];
-                const price = columns[1];
-                const image = columns[2];
-                const description = columns[3];
+// Cargar productos desde la API de Google Sheets
+async function loadProducts() {
+    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv');
+    const data = await response.text();
+    const rows = data.split('\n').slice(1);
+    products = rows.map(row => {
+        const [name, price, description, imageUrl] = row.split(',');
+        return { name, price, description, imageUrl };
+    });
+    renderProducts(products);
+}
 
-                // Crear la tarjeta de producto
-                const productCard = document.createElement("div");
-                productCard.classList.add("product-card");
+// Función para renderizar productos en la página
+function renderProducts(products) {
+    const productsContainer = document.getElementById('products-container');
+    productsContainer.innerHTML = ''; // Limpiar el contenedor antes de renderizar
+    products.forEach((product, index) => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        productCard.innerHTML = `
+            <img src="${product.imageUrl}" alt="${product.name}">
+            <div class="product-details">
+                <h3>${product.name}</h3>
+                <p>Precio: $${product.price}</p>
+            </div>
+        `;
+        productCard.addEventListener('click', () => showModal(index));
+        productsContainer.appendChild(productCard);
+    });
+}
 
-                productCard.innerHTML = `
-                    <img src="${image}" alt="${name}">
-                    <div class="product-details">
-                        <span class="product-name">${name}</span>
-                        <span class="product-price">${price}</span>
-                    </div>
-                `;
+// Función para mostrar la ventana modal de un producto específico
+function showModal(index) {
+    if (index < 0 || index >= products.length) return;
+    currentProductIndex = index;
+    const product = products[index];
+    document.getElementById('modal-image').src = product.imageUrl;
+    document.getElementById('modal-name').innerText = product.name;
+    document.getElementById('modal-description').innerText = product.description;
+    document.getElementById('modal-price').innerText = `Precio: $${product.price}`;
+    document.getElementById('contact-button').href = `https://wa.me/5492615707910?text=Estoy interesado en el producto ${product.name}`;
+    document.getElementById('product-modal').style.display = 'block';
+    document.querySelector('.whatsapp-float').style.display = 'none'; // Oculta el botón de WhatsApp flotante
+}
 
-                // Al hacer click en la tarjeta, mostrar la ventana modal con los detalles del producto
-                productCard.addEventListener("click", () => {
-                    modalImage.src = image;
-                    modalName.textContent = name;
-                    modalDescription.textContent = description;
-                    modalPrice.textContent = `Precio: ${price}`;
-                    contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${name}`;
-                    modal.style.display = "block";
-                });
+// Función para cerrar la ventana modal
+function closeModal() {
+    document.getElementById('product-modal').style.display = 'none';
+    document.querySelector('.whatsapp-float').style.display = 'block'; // Muestra el botón de WhatsApp flotante
+}
 
-                productList.appendChild(productCard);
-            });
-        })
-        .catch(error => console.error("Error al cargar los datos:", error));
-
-    // Cerrar la ventana modal cuando se hace clic en la "x"
-    closeModal.onclick = function() {
-        modal.style.display = "none";
+// Navegar al siguiente producto
+function nextProduct() {
+    if (currentProductIndex + 1 < products.length) {
+        showModal(currentProductIndex + 1);
     }
+}
 
-    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+// Navegar al producto anterior
+function previousProduct() {
+    if (currentProductIndex - 1 >= 0) {
+        showModal(currentProductIndex - 1);
     }
+}
 
-    // Funcionalidad del carrusel automático con transición suave
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-item');
-    const totalSlides = slides.length;
-
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
-        });
+// Evento de teclas para las flechas izquierda y derecha
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+        nextProduct();
+    } else if (event.key === 'ArrowLeft') {
+        previousProduct();
+    } else if (event.key === 'Escape') {
+        closeModal();
     }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide(currentSlide);
-    }
-
-    setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
-
-    showSlide(currentSlide); // Muestra la primera imagen inicialmente
 });
+
+// Cerrar modal al hacer clic en el botón de cierre
+document.querySelector('.close').addEventListener('click', closeModal);
+
+// Cerrar modal al hacer clic fuera de ella
+window.onclick = function(event) {
+    if (event.target == document.getElementById('product-modal')) {
+        closeModal();
+    }
+}
+
+
+
+
+// Ocultar el botón de WhatsApp flotante al hacer scroll hasta el footer
+window.addEventListener('scroll', function() {
+    const whatsappButton = document.querySelector('.whatsapp-float');
+    const footer = document.querySelector('footer');
+    const footerRect = footer.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    
+    if (footerRect.top <= viewportHeight) {
+        whatsappButton.style.display = 'none';
+    } else {
+        whatsappButton.style.display = 'block';
+    }
+});
+
+// Cargar los productos al cargar la página
+loadProducts();
