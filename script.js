@@ -1,16 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Selección de elementos
     const whatsappButton = document.getElementById('whatsapp-float');
     const modal = document.getElementById('product-modal');
-    const modalClose = document.querySelector('.modal-close');
+    const modalClose = modal ? modal.querySelector('.modal-close') : null;
     const footer = document.querySelector('footer');
+    const productCards = document.querySelectorAll('.product-card');
 
     // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
         const footerRect = footer.getBoundingClientRect();
         const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
 
-        // Mostrar/ocultar el botón dependiendo de la visibilidad del footer
         if (footerVisible) {
             whatsappButton.style.display = 'none';
         } else {
@@ -19,21 +18,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Ocultar el botón de WhatsApp al abrir la ventana modal
-    document.querySelectorAll('.product-card').forEach(card => {
+    productCards.forEach(card => {
         card.addEventListener('click', () => {
             whatsappButton.style.display = 'none';
         });
     });
 
     // Mostrar el botón de WhatsApp al cerrar la ventana modal
-    modalClose.addEventListener('click', () => {
-        whatsappButton.style.display = 'flex';
-    });
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            modal.style.display = 'none';
+            whatsappButton.style.display = 'flex';
+            checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
+        });
+    }
 
     // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
     window.addEventListener('scroll', checkButtonVisibility);
 
-    // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
     checkButtonVisibility();
 
     // Variables para la navegación de modales
@@ -48,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para abrir el producto en la modal
     function openProductModal(product) {
+        if (!modal) return;
+
         const modalImage = document.getElementById('modal-image');
         const modalName = document.getElementById('modal-name');
         const modalDescription = document.getElementById('modal-description');
@@ -71,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Añadir evento de teclado para cambiar entre productos
     document.addEventListener('keydown', (event) => {
-        if (modal.style.display === 'block') {
+        if (modal && modal.style.display === 'block') {
             if (event.key === 'ArrowLeft') {
                 // Moverse al producto anterior
                 const prevProduct = findNextProduct(currentProductIndex, -1);
@@ -84,17 +88,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Cerrar la modal al hacer clic en el botón de cerrar
-    modalClose.addEventListener('click', () => {
-        modal.style.display = 'none';
-        checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
-    });
-
     // Lógica para el carrusel
     let carouselIndex = 0;
     const carouselImages = document.querySelectorAll('.carousel img');
     
     function showNextCarouselImage() {
+        if (carouselImages.length === 0) return;
+
         carouselImages[carouselIndex].classList.remove('active');
         carouselIndex = (carouselIndex + 1) % carouselImages.length;
         carouselImages[carouselIndex].classList.add('active');
