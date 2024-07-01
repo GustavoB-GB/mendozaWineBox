@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = modal ? modal.querySelector('.modal-close') : null;
     const footer = document.querySelector('footer');
     const productCards = document.querySelectorAll('.product-card');
+    const carouselImages = document.querySelectorAll('.carousel img');
+    
+    // Verifica la existencia de los elementos
+    if (!whatsappButton || !modal || !modalClose || !footer || carouselImages.length === 0) {
+        console.error('No se encontraron algunos elementos necesarios en el DOM.');
+        return;
+    }
 
     // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
@@ -25,13 +32,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Mostrar el botón de WhatsApp al cerrar la ventana modal
-    if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            modal.style.display = 'none';
-            whatsappButton.style.display = 'flex';
-            checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
-        });
-    }
+    modalClose.addEventListener('click', () => {
+        modal.style.display = 'none';
+        whatsappButton.style.display = 'flex';
+        checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
+    });
 
     // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
     window.addEventListener('scroll', checkButtonVisibility);
@@ -50,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para abrir el producto en la modal
     function openProductModal(product) {
-        if (!modal) return;
-
         const modalImage = document.getElementById('modal-image');
         const modalName = document.getElementById('modal-name');
         const modalDescription = document.getElementById('modal-description');
@@ -75,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Añadir evento de teclado para cambiar entre productos
     document.addEventListener('keydown', (event) => {
-        if (modal && modal.style.display === 'block') {
+        if (modal.style.display === 'block') {
             if (event.key === 'ArrowLeft') {
                 // Moverse al producto anterior
                 const prevProduct = findNextProduct(currentProductIndex, -1);
@@ -90,8 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Lógica para el carrusel
     let carouselIndex = 0;
-    const carouselImages = document.querySelectorAll('.carousel img');
-    
+
     function showNextCarouselImage() {
         if (carouselImages.length === 0) return;
 
