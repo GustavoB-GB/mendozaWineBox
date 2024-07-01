@@ -1,112 +1,89 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const whatsappButton = document.getElementById('whatsapp-float');
-    const modal = document.getElementById('product-modal');
-    const modalClose = modal ? modal.querySelector('.modal-close') : null;
-    const footer = document.querySelector('footer');
-    const productCards = document.querySelectorAll('.product-card');
-    const carouselImages = document.querySelectorAll('.carousel img');
-    
-    // Verifica la existencia de los elementos
-    if (!whatsappButton || !modal || !modalClose || !footer || carouselImages.length === 0) {
-        console.error('No se encontraron algunos elementos necesarios en el DOM.');
-        return;
+document.addEventListener("DOMContentLoaded", function() {
+    // URL de la hoja de Google Sheets en formato CSV
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
+
+    // Elementos de la ventana modal
+    const modal = document.getElementById("product-modal");
+    const modalImage = document.getElementById("modal-image");
+    const modalName = document.getElementById("modal-name");
+    const modalDescription = document.getElementById("modal-description");
+    const modalPrice = document.getElementById("modal-price");
+    const contactButton = document.getElementById("contact-button");
+    const closeModal = document.querySelector(".close");
+
+    // Función para cargar datos desde Google Sheets
+    fetch(sheetUrl)
+        .then(response => response.text())
+        .then(data => {
+            const productList = document.getElementById("product-list");
+            const rows = data.split("\n").slice(1);
+            rows.forEach(row => {
+                const columns = row.split(",");
+                const name = columns[0];
+                const price = columns[1];
+                const image = columns[2];
+                const description = columns[3];
+
+                // Crear la tarjeta de producto
+                const productCard = document.createElement("div");
+                productCard.classList.add("product-card");
+
+                productCard.innerHTML = `
+                    <img src="${image}" alt="${name}">
+                    <div class="product-details">
+                        <span class="product-name">${name}</span>
+                        <span class="product-price">${price}</span>
+                    </div>
+                `;
+
+                // Al hacer click en la tarjeta, mostrar la ventana modal con los detalles del producto
+                productCard.addEventListener("click", () => {
+                    modalImage.src = image;
+                    modalName.textContent = name;
+                    modalDescription.textContent = description;
+                    modalPrice.textContent = `Precio: ${price}`;
+                    contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${name}`;
+                    modal.style.display = "block";
+                });
+
+                productList.appendChild(productCard);
+            });
+        })
+        .catch(error => console.error("Error al cargar los datos:", error));
+
+    // Cerrar la ventana modal cuando se hace clic en la "x"
+    closeModal.onclick = function() {
+        modal.style.display = "none";
     }
 
-    // Función para verificar si el botón debe mostrarse o no
-    function checkButtonVisibility() {
-        const footerRect = footer.getBoundingClientRect();
-        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
-
-        if (footerVisible) {
-            whatsappButton.style.display = 'none';
-        } else {
-            whatsappButton.style.display = 'flex';
+    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
     }
 
-    // Ocultar el botón de WhatsApp al abrir la ventana modal
-    productCards.forEach(card => {
-        card.addEventListener('click', () => {
-            whatsappButton.style.display = 'none';
-        });
-    });
+    // Funcionalidad del carrusel automático con transición suave
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
 
-    // Mostrar el botón de WhatsApp al cerrar la ventana modal
-    modalClose.addEventListener('click', () => {
-        modal.style.display = 'none';
-        whatsappButton.style.display = 'flex';
-        checkButtonVisibility(); // Verifica si el botón de WhatsApp debe mostrarse después de cerrar la modal
-    });
-
-    // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
-    window.addEventListener('scroll', checkButtonVisibility);
-
-    checkButtonVisibility();
-
-    // Variables para la navegación de modales
-    let currentProductIndex = 0;
-
-    // Función para encontrar el siguiente o anterior producto
-    function findNextProduct(currentIndex, direction) {
-        const products = document.querySelectorAll('.product-card');
-        let newIndex = (currentIndex + direction + products.length) % products.length;
-        return products[newIndex];
-    }
-
-    // Función para abrir el producto en la modal
-    function openProductModal(product) {
-        const modalImage = document.getElementById('modal-image');
-        const modalName = document.getElementById('modal-name');
-        const modalDescription = document.getElementById('modal-description');
-        const modalPrice = document.getElementById('modal-price');
-        const contactButton = document.getElementById('contact-button');
-        
-        const imgSrc = product.querySelector('img').src;
-        const name = product.querySelector('.product-name').innerText;
-        const description = product.getAttribute('data-description');
-        const price = product.querySelector('.product-price').innerText;
-
-        modalImage.src = imgSrc;
-        modalName.innerText = name;
-        modalDescription.innerText = description;
-        modalPrice.innerText = price;
-        contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20saber%20más%20sobre%20${encodeURIComponent(name)}.`;
-
-        modal.style.display = 'block';
-        currentProductIndex = Array.from(product.parentNode.children).indexOf(product);
-    }
-
-    // Añadir evento de teclado para cambiar entre productos
-    document.addEventListener('keydown', (event) => {
-        if (modal.style.display === 'block') {
-            if (event.key === 'ArrowLeft') {
-                // Moverse al producto anterior
-                const prevProduct = findNextProduct(currentProductIndex, -1);
-                openProductModal(prevProduct);
-            } else if (event.key === 'ArrowRight') {
-                // Moverse al siguiente producto
-                const nextProduct = findNextProduct(currentProductIndex, 1);
-                openProductModal(nextProduct);
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
             }
-        }
-    });
-
-    // Lógica para el carrusel
-    let carouselIndex = 0;
-
-    function showNextCarouselImage() {
-        if (carouselImages.length === 0) return;
-
-        carouselImages[carouselIndex].classList.remove('active');
-        carouselIndex = (carouselIndex + 1) % carouselImages.length;
-        carouselImages[carouselIndex].classList.add('active');
+        });
     }
-    
-    // Cambiar imagen cada 5 segundos
-    setInterval(showNextCarouselImage, 5000);
 
-    // Añadir transición suave para el carrusel
-    carouselImages.forEach(image => {
-        image.style.transition = 'opacity 1s ease-in-out';
-    });
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
+
+    showSlide(currentSlide); // Muestra la primera imagen inicialmente
 });
