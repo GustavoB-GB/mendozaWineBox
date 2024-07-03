@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // URL de la hoja de Google Sheets en formato CSV1
+    // URL de la hoja de Google Sheets en formato CSV
     const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
 
     // Elementos de la ventana modal
-    const modal = document.getElementById("product-modal");
+    const productModal = document.getElementById("product-modal");
     const modalImage = document.getElementById("modal-image");
     const modalName = document.getElementById("modal-name");
     const modalDescription = document.getElementById("modal-description");
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     modalDescription.textContent = description;
                     modalPrice.textContent = `Precio: ${price}`;
                     contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${name}`;
-                    modal.style.display = "block";
+                    productModal.style.display = "block";
                 });
 
                 productList.appendChild(productCard);
@@ -53,13 +53,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Cerrar la ventana modal cuando se hace clic en la "x"
     closeModal.onclick = function() {
-        modal.style.display = "none";
+        productModal.style.display = "none";
     }
 
     // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        if (event.target == productModal) {
+            productModal.style.display = "none";
         }
     }
 
@@ -87,11 +87,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     showSlide(currentSlide); // Muestra la primera imagen inicialmente
 
+    // Botón de WhatsApp flotante
     const whatsappButton = document.getElementById('whatsapp-float');
-    const modal = document.querySelector('.modal');
-    const modalClose = document.querySelector('.modal-close');
     const footer = document.querySelector('footer');
-    const products = document.querySelectorAll('.product-card');
+    const productCards = document.querySelectorAll('.product-card');
 
     // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
@@ -107,14 +106,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Ocultar el botón de WhatsApp al abrir la ventana modal
-    products.forEach(card => {
+    productCards.forEach(card => {
         card.addEventListener('click', () => {
             whatsappButton.style.display = 'none';
         });
     });
 
     // Mostrar el botón de WhatsApp al cerrar la ventana modal
-    modalClose.addEventListener('click', () => {
+    closeModal.addEventListener('click', () => {
         whatsappButton.style.display = 'flex';
         checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
     });
@@ -124,22 +123,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
     checkButtonVisibility();
-
-    // Para manejar la ventana modal (esto es solo un ejemplo básico)
-    products.forEach(product => {
-        product.addEventListener('click', function() {
-            modal.style.display = 'block';
-        });
-    });
-
-    modalClose.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-    
 });
