@@ -86,4 +86,60 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
 
     showSlide(currentSlide); // Muestra la primera imagen inicialmente
+
+    const whatsappButton = document.getElementById('whatsapp-float');
+    const modal = document.querySelector('.modal');
+    const modalClose = document.querySelector('.modal-close');
+    const footer = document.querySelector('footer');
+    const products = document.querySelectorAll('.product-card');
+
+    // Función para verificar si el botón debe mostrarse o no
+    function checkButtonVisibility() {
+        const footerRect = footer.getBoundingClientRect();
+        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
+
+        // Mostrar/ocultar el botón dependiendo de la visibilidad del footer
+        if (footerVisible) {
+            whatsappButton.style.display = 'none';
+        } else {
+            whatsappButton.style.display = 'flex';
+        }
+    }
+
+    // Ocultar el botón de WhatsApp al abrir la ventana modal
+    products.forEach(card => {
+        card.addEventListener('click', () => {
+            whatsappButton.style.display = 'none';
+        });
+    });
+
+    // Mostrar el botón de WhatsApp al cerrar la ventana modal
+    modalClose.addEventListener('click', () => {
+        whatsappButton.style.display = 'flex';
+        checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
+    });
+
+    // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
+    window.addEventListener('scroll', checkButtonVisibility);
+
+    // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
+    checkButtonVisibility();
+
+    // Para manejar la ventana modal (esto es solo un ejemplo básico)
+    products.forEach(product => {
+        product.addEventListener('click', function() {
+            modal.style.display = 'block';
+        });
+    });
+
+    modalClose.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+    
 });
