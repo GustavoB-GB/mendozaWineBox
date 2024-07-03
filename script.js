@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     modalPrice.textContent = `Precio: ${price}`;
                     contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${name}`;
                     productModal.style.display = "block";
+                    whatsappButton.style.display = 'none'; // Ocultar el botón de WhatsApp al abrir la ventana modal
                 });
 
                 productList.appendChild(productCard);
@@ -54,12 +55,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // Cerrar la ventana modal cuando se hace clic en la "x"
     closeModal.onclick = function() {
         productModal.style.display = "none";
+        whatsappButton.style.display = 'flex'; // Mostrar el botón de WhatsApp al cerrar la ventana modal
+        checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
     }
 
     // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
     window.onclick = function(event) {
         if (event.target == productModal) {
             productModal.style.display = "none";
+            whatsappButton.style.display = 'flex'; // Mostrar el botón de WhatsApp al cerrar la ventana modal
+            checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
         }
     }
 
@@ -90,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Botón de WhatsApp flotante
     const whatsappButton = document.getElementById('whatsapp-float');
     const footer = document.querySelector('footer');
-    const productCards = document.querySelectorAll('.product-card');
 
     // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
@@ -106,16 +110,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Ocultar el botón de WhatsApp al abrir la ventana modal
+    const productCards = document.querySelectorAll('.product-card');
     productCards.forEach(card => {
         card.addEventListener('click', () => {
             whatsappButton.style.display = 'none';
         });
-    });
-
-    // Mostrar el botón de WhatsApp al cerrar la ventana modal
-    closeModal.addEventListener('click', () => {
-        whatsappButton.style.display = 'flex';
-        checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
     });
 
     // Ocultar el botón de WhatsApp al hacer scroll hasta el footer
@@ -123,4 +122,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Asegurar que el botón de WhatsApp se verifique cuando se carga la página
     checkButtonVisibility();
+
+    // Para manejar la ventana modal (esto es solo un ejemplo básico)
+    productCards.forEach(product => {
+        product.addEventListener('click', function() {
+            productModal.style.display = 'block';
+            whatsappButton.style.display = 'none'; // Ocultar el botón de WhatsApp al abrir la ventana modal
+        });
+    });
+
+    closeModal.addEventListener('click', function() {
+        productModal.style.display = 'none';
+        whatsappButton.style.display = 'flex';
+        checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === productModal) {
+            productModal.style.display = 'none';
+            whatsappButton.style.display = 'flex';
+            checkButtonVisibility(); // Rechequear visibilidad por si está en el footer
+        }
+    });
 });
