@@ -293,12 +293,22 @@ html{
     }
 }
 
-/* Botón de WhatsApp flotante */
+/* Estilos para el botón de WhatsApp flotante */
 .whatsapp-float {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 100;
+    z-index: 1000;
+    display: flex; /* Mostrar el botón inicialmente */
     cursor: pointer;
+}
+
+.whatsapp-float img {
+    width: 50px; /* Tamaño de la imagen del botón */
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
 }
 
