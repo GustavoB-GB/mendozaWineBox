@@ -293,7 +293,6 @@ html{
         height: 175px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
     }
 }
-
 /* Estilos para el botón de WhatsApp flotante */
 .whatsapp-float {
     position: fixed;
@@ -308,8 +307,5 @@ html{
     width: 50px; /* Tamaño de la imagen del botón */
     height: 50px;
     border-radius: 50%;
-    background-color: white;
-    padding: 5px;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
 }
 
