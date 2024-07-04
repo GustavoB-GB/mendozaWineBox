@@ -86,7 +86,7 @@ html{
 .product-section {
     padding: 20px;
     text-align: center;
-    background-color: #85262d;
+    background: linear-gradient(135deg, #85262d, #2d1323);
 }
 
 /* Contenedor de productos */
