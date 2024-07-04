@@ -267,7 +267,39 @@ html{
     }
 }
 
+
 /* Media Queries */
+@media (max-width: 1080px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(20% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 190px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 850px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(35% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 190px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+
 @media (max-width: 768px) {
     #product-list {
         gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
