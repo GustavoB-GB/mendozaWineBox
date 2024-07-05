@@ -267,86 +267,86 @@ html{
     }
 }
 
-/* Media Queries */
 @media (max-width: 2000px) {
     #product-list {
-        gap: 10px; /* Espacio entre productos */
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc((100% - (4 * 10px)) / 5); /* 5 productos por fila */
-        max-width: calc((100% - (4 * 10px)) / 5);
+        flex: 1 1 calc(20% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
-        height: 250px; /* Ajusta la altura de la imagen */
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
 @media (max-width: 1500px) {
     #product-list {
-        gap: 10px; /* Espacio entre productos */
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc((100% - (3 * 10px)) / 4); /* 4 productos por fila */
-        max-width: calc((100% - (3 * 10px)) / 4);
+        flex: 1 1 calc(20% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
-        height: 250px; /* Ajusta la altura de la imagen */
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
 @media (max-width: 1080px) {
     #product-list {
-        gap: 10px; /* Espacio entre productos */
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc((100% - (2 * 10px)) / 3); /* 3 productos por fila */
-        max-width: calc((100% - (2 * 10px)) / 3);
+        flex: 1 1 calc(25% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
-        height: 250px; /* Ajusta la altura de la imagen */
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
 @media (max-width: 850px) {
     #product-list {
-        gap: 10px; /* Espacio entre productos */
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc((100% - (2 * 10px)) / 3); /* Muestra 3 productos por fila en pantallas medianas */
-        max-width: calc((100% - (2 * 10px)) / 3);
+        flex: 1 1 calc(30% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
-        height: 250px; /* Ajusta la altura de la imagen en pantallas medianas */
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
+
 @media (max-width: 768px) {
     #product-list {
-        gap: 10px; /* Espacio entre productos */
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc((100% - 10px) / 2); /* 2 productos por fila */
-        max-width: calc((100% - 10px) / 2);
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
-        height: 250px; /* Ajusta la altura de la imagen */
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
 }
 
 @media (max-width: 480px) {
     .product-card {
-        flex: 1 1 calc((100% - 10px) / 2); /* 2 productos por fila */
-        max-width: calc((100% - 10px) / 2);
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
     .product-card img {
