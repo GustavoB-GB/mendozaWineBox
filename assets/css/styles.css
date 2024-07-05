@@ -1,0 +1,370 @@
+/* Estilo general para la página 2*/
+body {
+    font-family: ui-monospace;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Fondo claro general */
+}
+
+header {
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(23,23,23,1) 17%, rgba(84,84,84,1) 100%);
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+/* Carousel */
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    height: 68vh; /* Altura dinámica basada en el viewport */
+    min-height: 400px; /* Altura mínima para pantallas pequeñas */
+    max-height: 680px; /* Altura máxima para pantallas grandes */
+    background-color: #333; /* Fondo oscuro para evitar desbordamiento de imagen */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la proporción de la imagen */
+}
+
+.carousel-item {
+    flex: 0 0 100%; /* Cada item ocupa el 100% del contenedor */
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.carousel-item.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+
+.promo {
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(23,23,23,1) 17%, rgba(84,84,84,1) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.product-section {
+    padding: 20px;
+    text-align: center;
+    background-image: linear-gradient(to right bottom, #9b363d, #862d3f, #6f273f, #58223b, #411d33);
+}
+
+/* Contenedor de productos */
+#product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Estilo de las tarjetas de productos */
+.product-card {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px; /* Altura fija para mantener las proporciones */
+    object-fit: cover; /* Mantiene la proporción de la imagen dentro del contenedor */
+    margin: 0; /* Sin margen para que ocupe todo el espacio superior */
+}
+
+.product-details {
+    padding: 10px;   
+    background-color: #f8f8f8; /* Asegura que el fondo sea del mismo color */
+}
+
+.product-details .product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.product-details .product-price {
+    color: #555;
+    text-align: right; /* Alinea el precio a la derecha */
+}
+
+/* Efecto hover */
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 1% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-image {
+    max-height: 670px;
+    max-width: 100%;
+    margin-bottom: -15px;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #25D366; /* Color de WhatsApp */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-button:hover {
+    background-color: #128C7E; /* Color más oscuro al pasar el mouse */
+}
+
+/* Footer general */
+.footer {
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(23,23,23,1) 17%, rgba(84,84,84,1) 100%);
+    color: #f0f0f0; /* Texto claro */
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+}
+
+.footer-left {
+    width: 50%;
+    padding-right: 20px; /* Espacio entre texto y el borde */
+}
+
+.footer-left p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.footer-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-right a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #f0f0f0;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-right a:hover {
+    color: #ffeb3b; /* Color de hover amarillo */
+}
+
+.footer-right img {
+    align-items: center;
+    margin-right: 10px;
+}
+
+@media (max-width: 2000px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(18% - 10px); /* Muestra 5 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+	margin: 2px;
+    }
+
+    .product-card img {
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 1500px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(23% - 10px); /* Muestra 4 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 1025px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(31% - 10px); /* Muestra 3 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 768px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        flex: 1 1 calc(45% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+    }
+
+    .product-card img {
+        height: 200px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
+    }
+}
+
+@media (max-width: 630px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        order: 1;
+        margin-bottom: 20px; /* Añade espacio debajo del texto descriptivo */
+    }
+
+    .footer-right {
+        order: 2;
+        text-align: center;
+	margin-top 10px;
+	width: auto;
+    }
+    .footer-left {
+   	 width: 90%;
+    }
+}
+
+/* Estilos para el botón de WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex; /* Mostrar el botón inicialmente */
+    cursor: pointer;
+}
+
+.whatsapp-float img {
+    width: 50px; /* Tamaño de la imagen del botón */
+    height: 50px;
+    border-radius: 50%;
+}
+
