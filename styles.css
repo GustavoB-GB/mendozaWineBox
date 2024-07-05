@@ -273,7 +273,7 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(20% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(18% - 10px); /* Muestra 5 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
@@ -288,7 +288,7 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(20% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(23% - 10px); /* Muestra 4 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
@@ -303,7 +303,7 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(25% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(23% - 10px); /* Muestra 4 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
@@ -318,7 +318,7 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(30% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(31% - 10px); /* Muestra 2 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
     }
 
