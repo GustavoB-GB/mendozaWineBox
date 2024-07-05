@@ -334,7 +334,7 @@ html{
     }
 
     .product-card img {
-        height: 175px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
+        height: 200px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
     }
 }
 
