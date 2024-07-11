@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // URL de la hoja de Google Sheets en formato CSV
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
+    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXUiOpycPuiFCX0kRlsEwoT_GIM2aJA3Duk1m_NSqvM0paVMVQF26Cfjz1WnuSs-WHD95WRao0lZ2l/pub?gid=0&single=true&output=csv";
+                     
 
     // Elementos de la ventana modal
     const productModal = document.getElementById("product-modal");
