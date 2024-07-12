@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const modalPrice = document.getElementById("modal-price");
     const contactButton = document.getElementById("contact-button");
     const closeModal = document.querySelector(".close");
-
+    const filterButtons = document.querySelectorAll(".filter-button");
+    
     // Variables para almacenar los datos de los productos
     let boxProducts = [];
     let otrosProducts = [];
@@ -37,6 +38,16 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error("Error al cargar los datos:", error));
     }
+
+     filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            filterButtons.forEach(btn => btn.classList.remove("selected")); // Desmarcar todos los botones
+            button.classList.add("selected"); // Marcar el botón seleccionado
+        });
+    });
+
+    // Marcar el primer botón por defecto
+    document.getElementById("filter-box").classList.add("selected");
 
     // Función para mostrar los productos en el DOM
     function displayProducts(products) {
