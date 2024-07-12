@@ -103,7 +103,7 @@ html{
 
     .filter-button:hover {
         background-color: #9b363dd6; /* Fondo del color primario */
-        color: #ffffff; /* Texto blanco */
+        color: rgb(217 217 217); /* Texto blanco */
         transform: scale(1.05); /* Aumenta ligeramente el tamaño */
     }
 
