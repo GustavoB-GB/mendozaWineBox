@@ -90,8 +90,8 @@ html{
 }
 
  .filter-button {
-        background-color: #ffffff; /* Fondo blanco */
-        color: #9b363d; /* Texto del color primario */
+        background-color: #f55050d9; /* Fondo */
+        color: rgba(84, 84, 84, 1); /* Texto del color primario */
         border: 2px solid #9b363d; /* Borde del color primario */
         padding: 10px 20px;
         margin: 5px;
@@ -102,8 +102,8 @@ html{
     }
 
     .filter-button:hover {
-        background-color: #9b363d; /* Fondo del color primario */
-        color: #ffffff; /* Texto blanco */
+        background-color: #f55050; /* Fondo del color primario */
+        color: rgba(84, 84, 84, 1); /* Texto blanco */
         transform: scale(1.05); /* Aumenta ligeramente el tamaño */
     }
 
