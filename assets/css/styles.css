@@ -290,7 +290,7 @@ html{
         flex: 1 1 calc(18% - 10px); /* Muestra 5 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
 	margin: 2px;
-	max-width: 350px;    
+	max-width: 340px;    
     }
 
     .product-card img {
@@ -306,6 +306,7 @@ html{
     .product-card {
         flex: 1 1 calc(23% - 10px); /* Muestra 4 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+	max-width: 340px;     
     }
 
     .product-card img {
