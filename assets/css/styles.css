@@ -223,6 +223,9 @@ html{
 }
 
 .galeria {
+	padding: 20px;
+    text-align: center;
+    background-image: linear-gradient(to right bottom, #411d33, #58223b, #6f273f, #862d3f, #9b363d);
     column-count: 3; /* Número de columnas (ajustable) */
     column-gap: 10px; /* Espaciado entre columnas */
 }
