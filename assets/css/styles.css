@@ -238,7 +238,7 @@ html{
 	transition: transform 0.3s;
 }
 .galeria-image:hover {
-	transform: scale(1.05);
+	transform: scale(1.025);
 }
 
 /* Footer general */
@@ -361,6 +361,9 @@ html{
     .product-card img {
         height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
+	.galeria {
+	    column-count: 2; /* Número de columnas (ajustable) */
+	}
 }
 
 @media (max-width: 480px) {
@@ -372,6 +375,9 @@ html{
     .product-card img {
         height: 200px; /* Ajusta la altura de la imagen en pantallas muy pequeñas */
     }
+		.galeria {
+	    column-count: 2; /* Número de columnas (ajustable) */
+	}
 }
 
 @media (max-width: 630px) {
@@ -395,6 +401,9 @@ html{
     .footer-left {
    	 width: 90%;
     }
+		.galeria {
+	    column-count: 2; /* Número de columnas (ajustable) */
+	}
 }
 
 /* Estilos para el botón de WhatsApp flotante */
