@@ -225,7 +225,7 @@ html{
 .galeria {
 	padding: 20px;
     text-align: center;
-    background-image: linear-gradient(to right bottom, #411d33, #58223b, #6f273f, #862d3f, #9b363d);
+    background-image: linear-gradient(to left bottom, #411d33, #58223b, #6f273f, #862d3f, #9b363d);
     column-count: 3; /* Número de columnas (ajustable) */
     column-gap: 10px; /* Espaciado entre columnas */
 }
@@ -235,6 +235,10 @@ html{
     margin-bottom: 10px; /* Espaciado entre imágenes verticalmente */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+	transition: transform 0.3s;
+}
+.galeria-image:hover {
+	transform: scale(1.05);
 }
 
 /* Footer general */
