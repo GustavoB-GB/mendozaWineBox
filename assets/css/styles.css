@@ -222,6 +222,18 @@ html{
     background-color: #128C7E; /* Color más oscuro al pasar el mouse */
 }
 
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+.galeria-image {
+    max-width: 150px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
 /* Footer general */
 .footer {
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(23,23,23,1) 17%, rgba(84,84,84,1) 100%);
