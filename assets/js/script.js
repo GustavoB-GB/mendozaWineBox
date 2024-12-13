@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
             productCard.classList.add("product-card");
 
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
                 <div class="product-details">
                     <span class="product-name">${product.name}</span>
                     <span class="product-price">${product.price}</span>
