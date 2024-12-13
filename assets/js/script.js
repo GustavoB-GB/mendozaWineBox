@@ -2,7 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // URLs de las hojas de Google Sheets en formato CSV v2
     const sheetUrls = {
         box: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv",
-        otros: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=45675148&single=true&output=csv"
+        otros: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=45675148&single=true&output=csv",
+        galeria: "https://docs.google.com/spreadsheets/d/e/2PACX-1vSJnQjHtFmN_j8yU5Jn6Ff_9ue1Lm5uUJRo5hj9ETMt3M-HH1rqkJmxEfO8FBCH-jUTROLhEFQuln2i/pub?gid=925159915&single=true&output=csv"
     };
 
     // Elementos de la ventana modal
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Variables para almacenar los datos de los productos
     let boxProducts = [];
     let otrosProducts = [];
+    let galeriaImages = [];
 
     // Función para cargar datos desde Google Sheets
     function loadProducts(sheetUrl, callback) {
@@ -38,7 +40,19 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error("Error al cargar los datos:", error));
     }
-
+    
+    // Función para cargar imágenes de la galería desde Google Sheets
+    function loadGaleria(sheetUrl, callback) {
+    fetch(sheetUrl)
+        .then(response => response.text())
+        .then(data => {
+            const rows = data.split("\n").slice(1);
+            const images = rows.map(row => row.trim()); // Solo se necesita el enlace de la imagen
+            callback(images);
+        })
+        .catch(error => console.error("Error al cargar la galería:", error));
+    }
+    
      filterButtons.forEach(button => {
         button.addEventListener("click", () => {
             filterButtons.forEach(btn => btn.classList.remove("selected")); // Desmarcar todos los botones
@@ -79,6 +93,21 @@ document.addEventListener("DOMContentLoaded", function() {
             productList.appendChild(productCard);
         });
     }
+    // Función para mostrar las imágenes de la galería en el DOM
+    function displayGaleria(images) {
+    const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
+    galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
+
+    images.forEach(image => {
+        const imgElement = document.createElement("img");
+        imgElement.src = image;
+        imgElement.alt = "Imagen de la galería";
+        imgElement.loading = "lazy"; // Mejora el rendimiento al cargar las imágenes
+        imgElement.classList.add("galeria-image"); // Clase para estilizar las imágenes
+
+        galeriaContainer.appendChild(imgElement);
+    });
+    }
 
     // Cargar productos de ambas hojas de cálculo
     loadProducts(sheetUrls.box, products => {
@@ -88,6 +117,12 @@ document.addEventListener("DOMContentLoaded", function() {
     loadProducts(sheetUrls.otros, products => {
         otrosProducts = products;
     });
+    // Cargar las imágenes de la galería
+    loadGaleria(sheetUrls.galeria, images => {
+        galeriaImages = images;
+        displayGaleria(galeriaImages);
+    });
+    
 
     // Manejar cambio de categoría
     document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
