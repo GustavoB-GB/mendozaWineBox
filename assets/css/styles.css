@@ -226,7 +226,7 @@ html{
 	padding: 20px;
     text-align: center;
     background-image: linear-gradient(to left bottom, #411d33, #58223b, #6f273f, #862d3f, #9b363d);
-    column-count: 3; /* Número de columnas (ajustable) */
+    column-count: 4; /* Número de columnas (ajustable) */
     column-gap: 10px; /* Espaciado entre columnas */
 }
 
@@ -330,6 +330,12 @@ html{
 
     .product-card img {
         height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 1400px){
+.galeria {
+        column-count: 3; 
     }
 }
 
