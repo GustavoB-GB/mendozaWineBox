@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // URLs de las hojas de Google Sheets en formato CSV
+    // URLs de las hojas de Google Sheets en formato CSV v2
     const sheetUrls = {
         box: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv",
         otros: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=45675148&single=true&output=csv"
