@@ -121,13 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     loadProducts(sheetUrls.otros, products => {
         otrosProducts = products;
     });
-    // Cargar las imágenes de la galería
-    loadGaleria(sheetUrls.galeria, images => {
-        galeriaImages = images;
-        displayGaleria(galeriaImages);
-    });
     
-
     // Manejar cambio de categoría
     document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
     document.getElementById("filter-otros").addEventListener("click", () => displayProducts(otrosProducts));
