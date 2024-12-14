@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => console.error("Error al cargar la galería:", error));
     }
     
-     filterButtons.forEach(button => {
+    filterButtons.forEach(button => {
         button.addEventListener("click", () => {
             filterButtons.forEach(btn => btn.classList.remove("selected")); // Desmarcar todos los botones
             button.classList.add("selected"); // Marcar el botón seleccionado
@@ -67,6 +67,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
         productList.innerHTML = ""; // Limpiar lista de productos
+        const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
+        galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
 
         products.forEach(product => {
             const productCard = document.createElement("div");
@@ -97,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayGaleria(images) {
     const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
     galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
+    const productList = document.getElementById("product-list");
+    productList.innerHTML = ""; // Limpiar lista de productos
 
     images.forEach(image => {
         const imgElement = document.createElement("img");
@@ -127,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Manejar cambio de categoría
     document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
     document.getElementById("filter-otros").addEventListener("click", () => displayProducts(otrosProducts));
-    document.getElementById("filter-all").addEventListener("click", () => displayProducts([...boxProducts, ...otrosProducts]));
+    document.getElementById("filter-all").addEventListener("click", () => displayGaleria(galeriaImages));
 
     // Cerrar la ventana modal cuando se hace clic en la "x"
     closeModal.onclick = function() {
