@@ -223,7 +223,6 @@ html{
 }
 
 .galeria {
-	padding: 20px;
     text-align: center;
     column-count: 4; /* Número de columnas (ajustable) */
     column-gap: 10px; /* Espaciado entre columnas */
