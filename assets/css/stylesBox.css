@@ -133,6 +133,7 @@ html{
     max-width: 100%;
     cursor: pointer;
     color: #f9f5f0;
+    font-size: larger;
 }
 
 .product-card {
