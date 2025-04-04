@@ -43,10 +43,14 @@ document.addEventListener("DOMContentLoaded", function() {
             productCard.innerHTML = `
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
                 <div class="product-details">
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-price">${product.price}</div>
+                    <div class="product-description">
+                        <span class="product-name">${product.name}</span>
+                        <p class="product-text">${product.description}</p>
+                    </div>
+                    <span class="product-price">${product.price}</span>
                 </div>
             `;
+
 
 
             productCard.addEventListener("click", () => {
