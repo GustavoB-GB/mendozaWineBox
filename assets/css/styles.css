@@ -145,14 +145,23 @@ html{
     padding: 5px;
 }
 
-.product-name {
+.product-description {
     flex: 2;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
     text-align: center;
     border-bottom: 1px solid black;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-text {
+    font-size: 0.9em;
+    color: #555;
 }
 
 .product-price {
@@ -162,6 +171,7 @@ html{
     justify-content: center;
     font-size: 1.2em;
 }
+
 
 
 /* Efecto hover */
