@@ -124,7 +124,7 @@ html{
 
 /* Estilo de las tarjetas de productos */
 .product-card {
-    background-color: #ffffff20;
+    background-color: #3a1f2b;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
@@ -132,7 +132,7 @@ html{
     transition: transform 0.3s;
     max-width: 100%;
     cursor: pointer;
-    color: #f9f5f0;
+    color: #f0e6e6;
     font-size: larger;
 }
 
