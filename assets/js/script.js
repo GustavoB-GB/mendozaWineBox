@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // Crear un enlace que dirija a Google
             productCard.innerHTML = `
-                <a href="https://www.google.com/search?q=${encodeURIComponent(product.name)}" target="_blank">
+                <a href="box.html" target="_blank">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     <div class="product-details">
                         <span class="product-name">${product.name}</span>
