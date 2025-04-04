@@ -320,7 +320,7 @@ html{
     }
     
     .product-card {
-        flex: 1 1 calc(18% - 10px); /* Muestra 5 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(45% - 15px); /* Muestra 5 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
 	margin: 2px;
 	max-width: 340px;    
