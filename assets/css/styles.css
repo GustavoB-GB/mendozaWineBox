@@ -139,6 +139,8 @@ html{
 }
 
 .product-details {
+    background: rgb(175,174,180);
+	background: linear-gradient(90deg, rgba(175,174,180,1) 25%, rgba(204,63,63,1) 75%);
     display: flex;
     flex-direction: column;
     width: 60%;
