@@ -43,10 +43,11 @@ document.addEventListener("DOMContentLoaded", function() {
             productCard.innerHTML = `
                 <img src="${product.image}" alt="${product.name}" loading="lazy">
                 <div class="product-details">
-                    <span class="product-name">${product.name}</span>
-                    <span class="product-price">${product.price}</span>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">${product.price}</div>
                 </div>
             `;
+
 
             productCard.addEventListener("click", () => {
                 modalImage.src = product.image;
