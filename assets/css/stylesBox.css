@@ -124,14 +124,15 @@ html{
 
 /* Estilo de las tarjetas de productos */
 .product-card {
-    background-color: #f8f8f8;
+    background-color: #ffffff20;
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     transition: transform 0.3s;
     max-width: 100%;
     cursor: pointer;
+    color: #f9f5f0;
 }
 
 .product-card {
