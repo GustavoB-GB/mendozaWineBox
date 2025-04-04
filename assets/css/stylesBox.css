@@ -175,7 +175,7 @@ html{
 
 /* Efecto hover */
 .product-card:hover {
-    transform: scale(0.70);
+    transform: scale(1.05);
 }
 
 
