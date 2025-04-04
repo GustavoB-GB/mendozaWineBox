@@ -74,45 +74,18 @@ document.addEventListener("DOMContentLoaded", function() {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
 
+            // Crear un enlace que dirija a Google
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" loading="lazy">
-                <div class="product-details">
-                    <span class="product-name">${product.name}</span>
-                    <span class="product-price">${product.price}</span>
-                </div>
+                <a href="https://www.google.com/search?q=${encodeURIComponent(product.name)}" target="_blank">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    <div class="product-details">
+                        <span class="product-name">${product.name}</span>
+                        <span class="product-price">${product.price}</span>
+                    </div>
+                </a>
             `;
 
-            productCard.addEventListener("click", () => {
-                modalImage.src = product.image;
-                modalName.textContent = product.name;
-                modalDescription.textContent = product.description;
-                modalPrice.textContent = `Precio: ${product.price}`;
-                contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${product.name}`;
-                productModal.style.display = "block";
-                whatsappButton.style.display = 'none';
-            });
-
             productList.appendChild(productCard);
-        });
-    }
-
-    // Nueva función para mostrar los productos de "box" como botones
-    function displayBoxButtons(products) {
-        const productList = document.getElementById("product-list");
-        productList.innerHTML = ""; // Limpiar lista de productos
-
-        products.forEach(product => {
-            const productButton = document.createElement("button");
-            productButton.classList.add("product-button");
-            productButton.textContent = product.name;
-
-            // Configurar el enlace del botón para abrir en otra pestaña
-            productButton.addEventListener("click", () => {
-                const productUrl = `https://example.com/product/${encodeURIComponent(product.name)}`;
-                window.open(productUrl, "_blank");
-            });
-
-            productList.appendChild(productButton);
         });
     }
 
@@ -148,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });    
 
     // Manejar cambio de categoría
-    document.getElementById("filter-box").addEventListener("click", () => displayBoxButtons(boxProducts));
+    document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
     document.getElementById("filter-otros").addEventListener("click", () => displayProducts(otrosProducts));
     document.getElementById("filter-all").addEventListener("click", () => displayGaleria(galeriaImages));
 
