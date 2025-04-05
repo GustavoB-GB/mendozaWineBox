@@ -149,13 +149,19 @@ html{
 .product-details .product-name {
     font-weight: bold;
     margin-bottom: 5px;
-    text-align: left;
+    text-align: left; /* Alinea el nombre a la izquierda */
+    color: #000; /* Asegura que el texto sea negro */
+    text-decoration: none; /* Elimina cualquier subrayado */
+    cursor: default; /* Cambia el cursor a texto normal */
 }
 
 .product-details .product-price {
-    color: #555;
+    color: #555; /* Color gris para el precio */
     text-align: right; /* Alinea el precio a la derecha */
+    text-decoration: none; /* Elimina cualquier subrayado */
+    cursor: default; /* Cambia el cursor a texto normal */
 }
+
 .product-more {
     display: block;
     margin-top: 5px;
