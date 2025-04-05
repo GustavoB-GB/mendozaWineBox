@@ -167,6 +167,10 @@ html{
     font-size: 30px;
 }
 
+.product-text {
+    display: flex; /* Oculta el elemento y no ocupa espacio */
+}
+
 .product-price {
     flex: 1;
     display: flex;
