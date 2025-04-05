@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="product-details">
                         <span class="product-name">${product.name}</span>
                         <span class="product-price">${product.price}</span>
+                        <span class="product-more">Ver más</span> <!-- Nueva línea añadida -->
                     </div>
                 </a>
             `;

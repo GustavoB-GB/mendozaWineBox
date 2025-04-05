@@ -156,6 +156,18 @@ html{
     color: #555;
     text-align: right; /* Alinea el precio a la derecha */
 }
+.product-more {
+    display: block;
+    margin-top: 5px;
+    color: #007bff; /* Color azul */
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product-more:hover {
+    text-decoration: underline;
+}
 
 /* Efecto hover */
 .product-card:hover {
