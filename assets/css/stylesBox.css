@@ -329,6 +329,10 @@ html{
 	    margin: 2px;	   
     }
 
+    .product-details {
+        display: flex; /* Vuelve a ser visible y ocupa espacio */
+    }
+
     .product-card img {
         height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
     }
@@ -343,6 +347,10 @@ html{
         flex: 1 1 calc(40% - 15px); /* Muestra 5 productos por fila en pantallas pequeñas */
         max-width: calc(40% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
 	    margin: 2px;	   
+    }
+
+    .product-details {
+        display: flex; /* Vuelve a ser visible y ocupa espacio */
     }
 
     .product-card img {
@@ -365,6 +373,10 @@ html{
         flex: 1 1 calc(60% - 10px); /* Muestra 3 productos por fila en pantallas pequeñas */
         max-width: calc(70% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
         font-size: 15px; 
+    }
+
+    .product-details {
+        display: flex; /* Vuelve a ser visible y ocupa espacio */
     }
 
     .product-card img {
@@ -403,36 +415,14 @@ html{
         border-radius: 10px;
     }
 
+    .product-details {
+        display: none; /* Oculta el elemento y no ocupa espacio */
+    }
+
     .product-name, .product-price {
         text-align: center; /* Centra el texto */
         margin: 10px 0; /* Añade espacio entre los elementos */
     }
-}
-
-@media (max-width: 630px) {
-    .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-left {
-        order: 1;
-        margin-bottom: 20px; /* Añade espacio debajo del texto descriptivo */
-    }
-
-    .footer-right {
-        order: 2;
-        text-align: center;
-	    margin-top: 10px;
-	    width: auto;
-    }
-    .footer-left {
-        width: 90%;
-    }
-		.galeria {
-	    column-count: 2; /* Número de columnas (ajustable) */
-	}
 }
 
 /* Estilos para el botón de WhatsApp flotante */
