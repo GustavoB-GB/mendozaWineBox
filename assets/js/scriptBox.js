@@ -1,6 +1,37 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // URL de la hoja de Google Sheets en formato CSV
-    const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv";
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener el parámetro de categoría de la URL
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get("cat");
+
+    // Definir la URL del CSV según la categoría
+    let sheetUrl = "";
+
+    switch (categoria) {
+        case "1":
+            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=2079387910&single=true&output=csv"; // CSV de categoría 1
+            break;
+        case "2":
+            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1185988817&single=true&output=csv"; // CSV de categoría 2
+            break;
+        case "3":
+            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1582548365&single=true&output=csv"; // CSV de categoría 3
+            break;
+        case "4":
+            sheetUrl = ""; // CSV de categoría 4
+            break;
+        case "5":
+            sheetUrl = ""; // CSV de categoría 5
+            break;
+        case "6":
+            sheetUrl = ""; // CSV de categoría 6
+            break;
+        case "7":
+            sheetUrl = ""; // CSV de categoría 7
+            break;
+        default:
+            console.error("Categoría no válida");
+            return;
+    }
 
     // Elementos de la ventana modal
     const productModal = document.getElementById("product-modal");
@@ -34,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Función para mostrar los productos en el DOM
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
-        productList.innerHTML = ""; // Limpiar lista de productos
+        productList.innerHTML = "";
 
         products.forEach(product => {
             const productCard = document.createElement("div");
@@ -51,7 +82,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             `;
 
-
             productCard.addEventListener("click", () => {
                 modalImage.src = product.image;
                 modalName.textContent = product.name;
@@ -65,37 +95,32 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Cargar y mostrar los productos de la hoja "box"
-    loadProducts(sheetUrl, products => {
-        displayProducts(products);
-    });
+    // Cargar y mostrar los productos
+    loadProducts(sheetUrl, displayProducts);
 
-    // Cerrar la ventana modal cuando se hace clic en la "x"
-    closeModal.onclick = function() {
+    // Cerrar modal al tocar la "x"
+    closeModal.onclick = function () {
         productModal.style.display = "none";
     };
 
-    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
-    window.onclick = function(event) {
+    // Cerrar modal al tocar fuera del contenido
+    window.onclick = function (event) {
         if (event.target == productModal) {
             productModal.style.display = "none";
         }
     };
-    
-    // Función para verificar si el botón debe mostrarse o no
+
+    // Botón de WhatsApp visible/invisible según scroll
     function checkButtonVisibility() {
+        const footer = document.querySelector("footer");
+        const whatsappButton = document.getElementById("whatsapp-button");
+
         const footerRect = footer.getBoundingClientRect();
         const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
 
-        if (footerVisible) {
-            whatsappButton.style.display = 'none';
-        } else {
-            whatsappButton.style.display = 'flex';
-        }
+        whatsappButton.style.display = footerVisible ? "none" : "flex";
     }
 
-    window.addEventListener('scroll', checkButtonVisibility);
-
+    window.addEventListener("scroll", checkButtonVisibility);
     checkButtonVisibility();
-
 });

@@ -68,14 +68,18 @@ document.addEventListener("DOMContentLoaded", function() {
         productList.innerHTML = ""; // Limpiar lista de productos
         const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
         galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
+        let contador = 0; // Contador para limitar la cantidad de productos mostrados
 
         products.forEach(product => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
 
+            contador++;
+            const link = `box.html?cat=${contador}`;
+
             // Crear un enlace que dirija a Google
             productCard.innerHTML = `
-                <a href="box.html" target="_blank">
+                <a href="${link}" target="_blank">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     <div class="product-details">
                         <span class="product-name">${product.name}</span>
