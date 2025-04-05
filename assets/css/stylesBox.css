@@ -350,6 +350,7 @@ html{
     }
 }
 
+
 @media (max-width: 1090px) {
     #product-list {
         gap: 5px; /* Reduce el espacio entre productos en pantallas pequeñas */
