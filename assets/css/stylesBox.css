@@ -377,8 +377,10 @@ html{
     }
 
     .product-card img {
-        height: 260px; /* Ajusta la altura de la imagen en pantallas pequeñas */
-        max-width: 200px;
+        height: 220px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+        margin-top: 15px;
+        margin-left: 15px;
+        border-radius: 10px;
     }
 }
 
