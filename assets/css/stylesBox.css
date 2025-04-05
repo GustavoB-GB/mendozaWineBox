@@ -374,23 +374,29 @@ html{
     .product-section {
         padding: 0px; /* Reduce el padding en pantallas pequeñas */
     }    
+    
     .product-card {
-        flex: 1 1 calc(60% - 10px); /* Muestra 3 productos por fila en pantallas pequeñas */
-        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+        display: flex;
+        flex-direction: column; /* Cambia a diseño vertical */
+        align-items: center; /* Centra los elementos horizontalmente */
+        justify-content: center; /* Centra los elementos verticalmente */
+        width: 100%; /* Ocupa todo el ancho disponible */
+        max-width: 100%; /* Asegura que no exceda el ancho */
         font-size: 15px; 
     }
 
     .product-card img {
-        height: 220px; /* Ajusta la altura de la imagen en pantallas pequeñas */
-        margin-top: 15px;
-        margin-left: 15px;
+        width: 100%; /* Ajusta la imagen al ancho del contenedor */
+        height: auto; /* Mantiene la proporción de la imagen */
+        margin: 0; /* Elimina márgenes */
         border-radius: 10px;
     }
+
+    .product-name, .product-price {
+        text-align: center; /* Centra el texto */
+        margin: 10px 0; /* Añade espacio entre los elementos */
+    }
 }
-
-
-
-
 
 @media (max-width: 630px) {
     .footer-content {
