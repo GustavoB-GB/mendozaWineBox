@@ -195,7 +195,7 @@ html{
 }
 
 .modal-content {
-    background-color: #fff;
+    background-color: #552439;
     margin: 1% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -203,6 +203,7 @@ html{
     max-width: 700px;
     text-align: center;
     border-radius: 10px;
+    color: #f0e6e6;
 }
 
 .close {
