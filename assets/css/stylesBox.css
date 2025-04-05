@@ -329,7 +329,7 @@ html{
 	    margin: 2px;	   
     }
 
-    .product-details {
+    .product-text {
         display: flex; /* Vuelve a ser visible y ocupa espacio */
     }
 
@@ -349,7 +349,7 @@ html{
 	    margin: 2px;	   
     }
 
-    .product-details {
+    .product-text {
         display: flex; /* Vuelve a ser visible y ocupa espacio */
     }
 
@@ -375,7 +375,7 @@ html{
         font-size: 15px; 
     }
 
-    .product-details {
+    .product-text {
         display: flex; /* Vuelve a ser visible y ocupa espacio */
     }
 
@@ -415,7 +415,7 @@ html{
         border-radius: 10px;
     }
 
-    .product-details {
+    .product-text {
         display: none; /* Oculta el elemento y no ocupa espacio */
     }
 
