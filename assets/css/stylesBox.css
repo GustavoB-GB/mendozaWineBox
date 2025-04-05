@@ -334,15 +334,15 @@ html{
     }
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1700px) {
     #product-list {
         gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
     
     .product-card {
-        flex: 1 1 calc(23% - 10px); /* Muestra 4 productos por fila en pantallas pequeñas */
+        flex: 1 1 calc(40% - 15px); /* Muestra 5 productos por fila en pantallas pequeñas */
         max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
-	max-width: 340px;     
+	    margin: 2px;	   
     }
 
     .product-card img {
@@ -350,11 +350,6 @@ html{
     }
 }
 
-@media (max-width: 1400px){
-.galeria {
-        column-count: 3; 
-    }
-}
 
 @media (max-width: 1025px) {
     #product-list {
