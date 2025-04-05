@@ -81,4 +81,21 @@ document.addEventListener("DOMContentLoaded", function() {
             productModal.style.display = "none";
         }
     };
+    
+    // Función para verificar si el botón debe mostrarse o no
+    function checkButtonVisibility() {
+        const footerRect = footer.getBoundingClientRect();
+        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
+
+        if (footerVisible) {
+            whatsappButton.style.display = 'none';
+        } else {
+            whatsappButton.style.display = 'flex';
+        }
+    }
+
+    window.addEventListener('scroll', checkButtonVisibility);
+
+    checkButtonVisibility();
+
 });
