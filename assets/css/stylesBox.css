@@ -372,8 +372,8 @@ html{
     }
     
     .product-section {
-        padding: 0px; /* Reduce el padding en pantallas pequeñas */
-    }    
+        padding: 10px; /* Reduce el padding en pantallas pequeñas */
+    }       
     
     .product-card {
         display: flex;
@@ -383,12 +383,13 @@ html{
         width: 100%; /* Ocupa todo el ancho disponible */
         max-width: 100%; /* Asegura que no exceda el ancho */
         font-size: 15px; 
+        height: auto;
     }
 
     .product-card img {
-        width: 100%; /* Ajusta la imagen al ancho del contenedor */
+        max-width: 70%; /* Ajusta la imagen al ancho del contenedor */
         height: auto; /* Mantiene la proporción de la imagen */
-        margin: 0; /* Elimina márgenes */
+        margin: 15px 0 0 0; /* Elimina márgenes */
         border-radius: 10px;
     }
 
