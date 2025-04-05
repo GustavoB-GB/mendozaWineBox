@@ -359,9 +359,10 @@ html{
     .product-section {
         padding: 0px; /* Reduce el padding en pantallas pequeñas */
     }    
+    
     .product-card {
         flex: 1 1 calc(60% - 10px); /* Muestra 3 productos por fila en pantallas pequeñas */
-        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+        max-width: calc(70% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
         font-size: 15px; 
     }
 
