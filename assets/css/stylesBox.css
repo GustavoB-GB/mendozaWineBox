@@ -365,6 +365,26 @@ html{
     }
 }
 
+@media (max-width: 670px) {
+    #product-list {
+        gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
+    }
+    
+    .product-card {
+        flex: 1 1 calc(60% - 10px); /* Muestra 3 productos por fila en pantallas pequeñas */
+        max-width: calc(100% - 10px); /* Ajusta el tamaño de la tarjeta en pantallas pequeñas */
+        font-size: 15px; 
+    }
+
+    .product-card img {
+        height: 260px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+        max-width: 200px;
+    }
+}
+
+
+
+
 
 @media (max-width: 630px) {
     .footer-content {
