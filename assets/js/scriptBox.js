@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
     }
 
+    const promoElement = document.querySelector(".promo");
+    if (promoElement && categoria) {
+        promoElement.textContent = `OPCION BOX ${categoria}`;
+    }
+
     // Elementos de la ventana modal
     const productModal = document.getElementById("product-modal");
     const modalImage = document.getElementById("modal-image");
