@@ -2,8 +2,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // URLs de las hojas de Google Sheets en formato CSV v2
     const sheetUrls = {
-        box: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=0&single=true&output=csv",
-        galeria: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=333970054&single=true&output=csv"
+        box: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=0&single=true&output=csv",
+        galeria: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=333970054&single=true&output=csv"
     };
 
     // Elementos de la ventana modal

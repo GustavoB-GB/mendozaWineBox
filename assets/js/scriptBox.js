@@ -5,13 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Definir la URL del CSV según la categoría
     const sheetUrls = {
-        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=2079387910&single=true&output=csv",
-        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1185988817&single=true&output=csv",
-        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1582548365&single=true&output=csv",
-        4: "",
-        5: "",
-        6: "",
-        7: ""
+        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=45675148&single=true&output=csv",
+        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=2024649839&single=true&output=csv",
+        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=621484147&single=true&output=csv",
+        4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=2115867844&single=true&output=csv",
+        5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1061760595&single=true&output=csv",
+        6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1631909415&single=true&output=csv",
+        7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1465484676&single=true&output=csv",
+        8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1297030853&single=true&output=csv"
     };
 
     const sheetUrl = sheetUrls[categoria] || "";
