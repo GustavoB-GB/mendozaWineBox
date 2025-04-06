@@ -4,37 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const categoria = params.get("cat");
 
     // Definir la URL del CSV según la categoría
-    let sheetUrl = "";
+    const sheetUrls = {
+        1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=2079387910&single=true&output=csv",
+        2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1185988817&single=true&output=csv",
+        3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1582548365&single=true&output=csv",
+        4: "",
+        5: "",
+        6: "",
+        7: ""
+    };
 
-    switch (categoria) {
-        case "1":
-            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=2079387910&single=true&output=csv"; // CSV de categoría 1
-            break;
-        case "2":
-            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1185988817&single=true&output=csv"; // CSV de categoría 2
-            break;
-        case "3":
-            sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQ9Qy5NWimWZtk1DN2Vsi4ZtZ9DXRQV5VDu4HW15_GXFJoaR25G6FSMJtwUDM1J8LH4oHlS7TkRsjj/pub?gid=1582548365&single=true&output=csv"; // CSV de categoría 3
-            break;
-        case "4":
-            sheetUrl = ""; // CSV de categoría 4
-            break;
-        case "5":
-            sheetUrl = ""; // CSV de categoría 5
-            break;
-        case "6":
-            sheetUrl = ""; // CSV de categoría 6
-            break;
-        case "7":
-            sheetUrl = ""; // CSV de categoría 7
-            break;
-        default:
-            console.error("Categoría no válida");
-            return;
+    const sheetUrl = sheetUrls[categoria] || "";
+    if (!sheetUrl) {
+        console.error("Categoría no válida");
+        return;
     }
 
+    // Actualizar el texto del elemento .promo
     const promoElement = document.querySelector(".promo");
-    if (promoElement && categoria) {
+    if (promoElement) {
         promoElement.textContent = `OPCION BOX ${categoria}`;
     }
 
@@ -54,13 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 const rows = data.split("\n").slice(1);
                 const products = rows.map(row => {
-                    const columns = row.split(",");
-                    return {
-                        name: columns[0],
-                        price: columns[1],
-                        image: columns[2],
-                        description: columns[3]
-                    };
+                    const [name, price, image, description] = row.split(",");
+                    return { name, price, image, description };
                 });
                 callback(products);
             })
@@ -87,53 +70,49 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
-            productCard.addEventListener("click", () => {
-                modalImage.src = product.image;
-                modalName.textContent = product.name;
-                modalDescription.textContent = product.description;
-                modalPrice.textContent = `Precio: ${product.price}`;
-                contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${product.name}`;
-                productModal.style.display = "block";
-            });
-
+            productCard.addEventListener("click", () => openModal(product));
             productList.appendChild(productCard);
         });
     }
 
-    // Cargar y mostrar los productos
-    loadProducts(sheetUrl, displayProducts);
+    // Función para abrir la ventana modal
+    function openModal(product) {
+        modalImage.src = product.image;
+        modalName.textContent = product.name;
+        modalDescription.textContent = product.description;
+        modalPrice.textContent = `Precio: ${product.price}`;
+        contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${product.name}`;
+        productModal.style.display = "block";
+        whatsappButton.style.display = "none";
+    }
 
-    // Cerrar la ventana modal cuando se hace clic en la "x"
-    closeModal.onclick = function() {
+    // Función para cerrar la ventana modal
+    function closeModalHandler() {
         productModal.style.display = "none";
-        whatsappButton.style.display = 'flex';
+        whatsappButton.style.display = "flex";
         checkButtonVisibility();
     }
 
-    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
-    window.onclick = function(event) {
-        if (event.target == productModal) {
-            productModal.style.display = "none";
-            whatsappButton.style.display = 'flex';
-            checkButtonVisibility();
-        }
-    }    
+    // Cerrar la ventana modal
+    closeModal.onclick = closeModalHandler;
+    window.onclick = event => {
+        if (event.target === productModal) closeModalHandler();
+    };
 
     // Botón de WhatsApp flotante
-    const whatsappButton = document.getElementById('whatsapp-float');
-    const footer = document.querySelector('footer');
+    const whatsappButton = document.getElementById("whatsapp-float");
+    const footer = document.querySelector("footer");
 
     // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
         const footerRect = footer.getBoundingClientRect();
-        const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
-
-        if (footerVisible) {
-            whatsappButton.style.display = 'none';
-        } else {
-            whatsappButton.style.display = 'flex';
-        }
+        const footerVisible = footerRect.top < window.innerHeight && footerRect.bottom >= 0;
+        whatsappButton.style.display = footerVisible ? "none" : "flex";
     }
+
     window.addEventListener("scroll", checkButtonVisibility);
     checkButtonVisibility();
+
+    // Cargar y mostrar los productos
+    loadProducts(sheetUrl, displayProducts);
 });
