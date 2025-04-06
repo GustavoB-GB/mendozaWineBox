@@ -115,17 +115,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    // Botón de WhatsApp visible/invisible según scroll
-    function checkButtonVisibility() {
-        const footer = document.querySelector("footer");
-        const whatsappButton = document.getElementById("whatsapp-button");
+    // Botón de WhatsApp flotante
+    const whatsappButton = document.getElementById('whatsapp-float');
+    const footer = document.querySelector('footer');
 
+    // Función para verificar si el botón debe mostrarse o no
+    function checkButtonVisibility() {
         const footerRect = footer.getBoundingClientRect();
         const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
 
-        whatsappButton.style.display = footerVisible ? "none" : "flex";
+        if (footerVisible) {
+            whatsappButton.style.display = 'none';
+        } else {
+            whatsappButton.style.display = 'flex';
+        }
     }
-
     window.addEventListener("scroll", checkButtonVisibility);
     checkButtonVisibility();
 });
