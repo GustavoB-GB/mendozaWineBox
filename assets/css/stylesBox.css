@@ -15,7 +15,9 @@ header {
 
 html{
     scroll-behavior: smooth;
-}
+    background-image: linear-gradient(to right bottom, #9b363d, #862d3f, #6f273f, #58223b, #411d33);
+}   
+    
 
 .navbar {
     display: flex;
