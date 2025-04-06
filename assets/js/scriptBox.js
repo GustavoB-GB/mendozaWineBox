@@ -103,17 +103,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Cargar y mostrar los productos
     loadProducts(sheetUrl, displayProducts);
 
-    // Cerrar modal al tocar la "x"
-    closeModal.onclick = function () {
+    // Cerrar la ventana modal cuando se hace clic en la "x"
+    closeModal.onclick = function() {
         productModal.style.display = "none";
-    };
+        whatsappButton.style.display = 'flex';
+        checkButtonVisibility();
+    }
 
-    // Cerrar modal al tocar fuera del contenido
-    window.onclick = function (event) {
+    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
+    window.onclick = function(event) {
         if (event.target == productModal) {
             productModal.style.display = "none";
+            whatsappButton.style.display = 'flex';
+            checkButtonVisibility();
         }
-    };
+    }    
 
     // Botón de WhatsApp flotante
     const whatsappButton = document.getElementById('whatsapp-float');
