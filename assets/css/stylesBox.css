@@ -181,6 +181,29 @@ html{
     font-size: 1.5em;
 }
 
+.image-wrapper {
+    position: relative;
+    height: 100%;
+    width: 40%;
+}
+
+.image-wrapper img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-right: 1px solid black;
+}
+
+.product-label {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 70px; /* ajustá el tamaño a gusto */
+    height: auto;
+    z-index: 2;
+}
+
+
 /* Efecto hover para la tarjeta de producto */
 .product-card:hover {
     transform: scale(1.025);     

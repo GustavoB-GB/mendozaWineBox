@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(data => {
                 const rows = data.split("\n").slice(1);
                 const products = rows.map(row => {
-                    const [name, price, image, description] = row.split(",");
-                    return { name, price, image, description };
+                    const [name, price, image, description, etiqueta] = row.split(",");
+                    return { name, price, image, description, etiqueta };
                 });
                 callback(products);
             })
@@ -61,7 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
             productCard.classList.add("product-card");
 
             productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <div class="image-wrapper">
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    ${
+                        product.etiqueta === "oferta"
+                            ? `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">`
+                            : product.etiqueta === "sin stock"
+                                ? `<img src="assets/images/stock.png" class="product-label" alt="Sin stock">`
+                                : ""
+                    }
+                </div>
                 <div class="product-details">
                     <div class="product-description">
                         <span class="product-name">${product.name}</span>
