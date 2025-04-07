@@ -59,18 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
         products.forEach(product => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
-
-            console.log(product.etiqueta); // Verificar el contenido del producto
+            
             productCard.innerHTML = `
                 <div class="image-wrapper">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
-                    ${
-                        product.etiqueta === "oferta"
-                            ? `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">`
-                            : product.etiqueta === "sin stock"
-                                ? `<img src="assets/images/stock.png" class="product-label" alt="Sin stock">`
-                                : ""
-                    }
+                    ${product.etiqueta === "oferta" ? `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">` : ""}
+                    ${product.etiqueta === "sin stock" ? `<img src="assets/images/stock.png" class="product-label" alt="Sin Stock">` : ""}
                 </div>
                 <div class="product-details">
                     <div class="product-description">
