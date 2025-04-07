@@ -436,7 +436,7 @@ html{
 
 @media (max-width: 750px) {
     .product-label {
-        right: -16px;
+        right: 0px;
     }
 
     #product-list {
