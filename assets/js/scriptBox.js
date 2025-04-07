@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
 
+            console.log(product-etiqueta); // Verificar el contenido del producto
             productCard.innerHTML = `
                 <div class="image-wrapper">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
