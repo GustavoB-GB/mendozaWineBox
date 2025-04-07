@@ -51,6 +51,16 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error al cargar los datos:", error));
     }
 
+    // Función para obtener la imagen de la etiqueta
+    function getEtiquetaImage(etiqueta) {
+        if (etiqueta === "oferta") {
+            return `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">`;
+        } else if (etiqueta === "sin stock") {
+            return `<img src="assets/images/stock.png" class="product-label" alt="Sin Stock">`;
+        }
+        return "";
+    }
+
     // Función para mostrar los productos en el DOM
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
@@ -63,8 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             productCard.innerHTML = `
                 <div class="image-wrapper">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
-                    ${product.etiqueta === "oferta" ? `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">` : ""}
-                    ${product.etiqueta === "sin stock" ? `<img src="assets/images/stock.png" class="product-label" alt="Sin Stock">` : ""}
+                    ${product.etiqueta ? getEtiquetaImage(product.etiqueta) : ""}
                 </div>
                 <div class="product-details">
                     <div class="product-description">
