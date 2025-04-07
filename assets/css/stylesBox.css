@@ -195,13 +195,16 @@ html{
 }
 
 .product-label {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 70px; /* ajustá el tamaño a gusto */
+    max-width: 80px; /* o lo que prefieras */
+    max-height: 80px;
+    width: auto;
     height: auto;
+    position: absolute;
+    top: 0px;
+    right: 0px;
     z-index: 2;
 }
+
 
 
 /* Efecto hover para la tarjeta de producto */
