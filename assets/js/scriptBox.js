@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para obtener la imagen de la etiqueta
     function getEtiquetaImage(etiqueta) {
+        etiqueta = etiqueta?.trim().toLowerCase();
         if (etiqueta === "oferta") {
             return `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">`;
         } else if (etiqueta === "sin stock") {
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             
             console.log("Etiqueta:", product.etiqueta);
             console.log("Imagen generada:", getEtiquetaImage(product.etiqueta));
-
+        
 
             productCard.innerHTML = `
                 <div class="image-wrapper">
