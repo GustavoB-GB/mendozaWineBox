@@ -203,6 +203,8 @@ html{
     top: 0px;
     right: 0px;
     z-index: 2;
+    border: none !important;
+    outline: none !important;
 }
 
 
@@ -217,7 +219,7 @@ html{
 .modal {
     display: none; /* Oculto por defecto */
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -392,6 +394,10 @@ html{
 
 
 @media (max-width: 1090px) {
+    .product-label {
+        right: -16px;
+    }
+
     #product-list {
         gap: 5px; /* Reduce el espacio entre productos en pantallas pequeñas */
         padding: 20px;
@@ -441,7 +447,6 @@ html{
     }
 
     .product-card img {
-        max-width: 70%; /* Ajusta la imagen al ancho del contenedor */
         height: auto; /* Mantiene la proporción de la imagen */
         margin: 15px 0 0 0; /* Elimina márgenes */
         border-radius: 10px;
