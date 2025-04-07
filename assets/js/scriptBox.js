@@ -70,6 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
             
+            console.log("Etiqueta:", product.etiqueta);
+            console.log("Imagen generada:", getEtiquetaImage(product.etiqueta));
+
+
             productCard.innerHTML = `
                 <div class="image-wrapper">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
