@@ -82,9 +82,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 <a href="${link}" target="_blank">
                     <img src="${product.image}" alt="${product.name}" loading="lazy">
                     <div class="product-details">
-                        <span class="product-name">${product.name}</span>
-                        <span class="product-price">${product.price}</span>
-                        <span class="product-more">Ver más</span> <!-- Nueva línea añadida -->
+                        <div class="product-name-price">
+                            <span class="product-name">${product.name}</span>
+                            <span class="product-price">${product.price}</span>
+                        </div>
+                        <span class="product-more">Ver más</span>
                     </div>
                 </a>
             `;
