@@ -17,6 +17,9 @@ h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
   
+a {
+    text-decoration: none;
+}
 
 
 html{
@@ -148,25 +151,27 @@ html{
 }
 
 .product-details {
-    padding: 10px;   
-    background-color: #f8f8f8; /* Asegura que el fondo sea del mismo color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
 }
 
 .product-details .product-name {
     font-weight: bold;
     margin-bottom: 5px;
-    text-align: left; /* Alinea el nombre a la izquierda */
-    color: #000; /* Asegura que el texto sea negro */
-    text-decoration: none; /* Elimina cualquier subrayado */
-    cursor: default; /* Cambia el cursor a texto normal */
+    text-align: left;
+    color: #000; 
+    text-decoration: none; 
+    cursor: default;
 }
 
 .product-details .product-price {
-    color: #555; /* Color gris para el precio */
-    text-align: right; /* Alinea el precio a la derecha */
-    text-decoration: none; /* Elimina cualquier subrayado */
-    cursor: default; /* Cambia el cursor a texto normal */
-}
+    color: #555; 
+    text-align: right; 
+    text-decoration: none; 
+    cursor: default;
 
 .product-more {
     display: block;
