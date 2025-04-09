@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalPrice = document.getElementById("modal-price");
     const contactButton = document.getElementById("contact-button");
     const closeModal = document.querySelector(".close");
+    const modalEtiqueta = document.getElementById("modal-etiqueta");
 
     // Función para cargar datos desde Google Sheets
     function loadProducts(sheetUrl, callback) {
@@ -103,6 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
         modalDescription.textContent = product.description;
         modalPrice.textContent = `Precio: ${product.price}`;
         contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20${product.name}`;
+        
+        // Insertar la etiqueta si existe
+        modalEtiqueta.innerHTML = product.etiqueta ? getEtiquetaImage(product.etiqueta) : "";
+    
         productModal.style.display = "block";
         whatsappButton.style.display = "none";
     }
