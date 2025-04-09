@@ -368,6 +368,17 @@ html{
         column-count: 3; 
     }
 }
+@media (max-width: 768px) {
+
+    .product-price {
+        font-size: initial; 
+        margin-right: initial;
+    }
+    .product-name {
+        font-size: initial; 
+        margin-right: initial;
+    }
+}
 
 @media (max-width: 1025px) {
     #product-list {
