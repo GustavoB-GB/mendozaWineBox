@@ -251,8 +251,6 @@ html{
 
 #modal-etiqueta img {
     position: absolute;
-    top: 10px;
-    right: 10px;
     max-width: 80px;
     max-height: 80px;
     width: auto;

@@ -385,6 +385,16 @@ html{
 }
 
 @media (max-width: 768px) {
+
+    .product-price {
+        font-size: initial; 
+        margin-right: initial;
+    }
+    .product-name {
+        font-size: initial; 
+        margin-right: initial;
+    }
+
     #product-list {
         gap: 10px; /* Reduce el espacio entre productos en pantallas pequeñas */
     }
