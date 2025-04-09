@@ -178,10 +178,11 @@ html{
 .product-more {
     display: block;
     margin-top: 5px;
-    color: #007bff; /* Color azul */
+    color: #007bff; 
     font-size: 14px;
     text-align: center;
     cursor: pointer;
+    text-decoration: underline; 
 }
 
 .product-more:hover {
