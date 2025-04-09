@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="product-details">
                         <div class="product-name-price">
                             <span class="product-name">${product.name}</span>
-                            <span class="product-price">${product.price}</span>
+                            <span class="product-price">"Desde "${product.price}</span>
                         </div>
                         <span class="product-more">Ver más</span>
                     </div>
