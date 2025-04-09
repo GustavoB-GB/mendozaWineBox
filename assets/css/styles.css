@@ -368,7 +368,7 @@ html{
         column-count: 3; 
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 1150px) {
 
     .product-price {
         font-size: initial; 
@@ -392,6 +392,17 @@ html{
 
     .product-card img {
         height: 250px; /* Ajusta la altura de la imagen en pantallas pequeñas */
+    }
+}
+@media (max-width: 870px) {
+
+    .product-price {
+        font-size: initial; 
+        margin-right: initial;
+    }
+    .product-name {
+        font-size: initial; 
+        margin-right: initial;
     }
 }
 
