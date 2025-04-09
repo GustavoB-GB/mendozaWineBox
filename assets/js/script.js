@@ -6,16 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
         galeria: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=333970054&single=true&output=csv"
     };
 
-    // Elementos de la ventana modal
-    const productModal = document.getElementById("product-modal");
-    const modalImage = document.getElementById("modal-image");
-    const modalName = document.getElementById("modal-name");
-    const modalDescription = document.getElementById("modal-description");
-    const modalPrice = document.getElementById("modal-price");
-    const contactButton = document.getElementById("contact-button");
-    const closeModal = document.querySelector(".close");
-    const filterButtons = document.querySelectorAll(".filter-button");
-    
     // Variables para almacenar los datos de los productos
     let boxProducts = [];
     let galeriaImages = [];
@@ -127,22 +117,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Manejar cambio de categoría
     document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
     document.getElementById("filter-all").addEventListener("click", () => displayGaleria(galeriaImages));
-
-    // Cerrar la ventana modal cuando se hace clic en la "x"
-    closeModal.onclick = function() {
-        productModal.style.display = "none";
-        whatsappButton.style.display = 'flex';
-        checkButtonVisibility();
-    }
-
-    // Cerrar la ventana modal cuando se hace clic fuera del contenido de la modal
-    window.onclick = function(event) {
-        if (event.target == productModal) {
-            productModal.style.display = "none";
-            whatsappButton.style.display = 'flex';
-            checkButtonVisibility();
-        }
-    }
 
     // Funcionalidad del carrusel automático con transición suave
     let currentSlide = 0;
