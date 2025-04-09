@@ -41,13 +41,6 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error("Error al cargar la galería:", error));
     }
-    
-    filterButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            filterButtons.forEach(btn => btn.classList.remove("selected")); // Desmarcar todos los botones
-            button.classList.add("selected"); // Marcar el botón seleccionado
-        });
-    });
 
     // Marcar el primer botón por defecto
     document.getElementById("filter-box").classList.add("selected");
