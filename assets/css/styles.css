@@ -429,9 +429,8 @@ html{
 	    column-count: 2; /* Número de columnas (ajustable) */
 	}
 }
-
 @media (max-width: 520px) {
-    .product-list{
+    #product-list{
         padding: 0px;
     }
 }
