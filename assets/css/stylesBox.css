@@ -413,6 +413,7 @@ html{
 
     .product-text {
         display: flex; /* Vuelve a ser visible y ocupa espacio */
+        font-size: medium;
     }
 
     .product-card img {
@@ -450,6 +451,7 @@ html{
         margin-top: 15px;
         margin-left: 15px;
         border-radius: 10px;
+        max-width: 90%;
     }
 }
 
