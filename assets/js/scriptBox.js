@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Actualizar el texto del elemento .promo
     const promoElement = document.querySelector(".promo");
     if (promoElement) {
-        promoElement.textContent = `OPCION BOX ${categoria}`;
+        promoElement.textContent = `OPCIONES BOX ${categoria}`;
     }
 
     // Elementos de la ventana modal
