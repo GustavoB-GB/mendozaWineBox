@@ -512,3 +512,26 @@ html{
     border-radius: 50%;
 }
 
+@media (max-width: 630px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        order: 1;
+        margin-bottom: 20px; /* Añade espacio debajo del texto descriptivo */
+    }
+
+    .footer-right {
+        order: 2;
+        text-align: center;
+	    margin-top: 10px;
+	    width: auto;
+    }
+    .footer-left {
+        width: 90%;
+    }
+}
+
