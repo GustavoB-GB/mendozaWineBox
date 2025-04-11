@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modalName.textContent = product.name;
         modalDescription.textContent = product.description;
         modalPrice.textContent = `Precio: ${product.price}`;
-        contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20%20box${categoria}${product.name}`;
+        contactButton.href = `https://wa.me/5492615707910?text=Hola,%20me%20interesa%20el%20%20box%20${categoria}%20${product.name}`;
         
         // Insertar la etiqueta si existe
         modalEtiqueta.innerHTML = product.etiqueta ? getEtiquetaImage(product.etiqueta) : "";
