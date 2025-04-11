@@ -430,6 +430,13 @@ html{
 	}
 }
 
+@media (max-width: 520px) {
+    .product-list{
+        padding: 0px;
+    }
+}
+
+
 /* Estilos para el botón de WhatsApp flotante */
 .whatsapp-float {
     position: fixed;
