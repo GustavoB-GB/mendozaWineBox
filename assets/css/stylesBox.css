@@ -535,7 +535,7 @@ html{
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 550px) {
     .product-section{
         padding: 5px; /* Reduce el padding en pantallas pequeñas */
     }    
