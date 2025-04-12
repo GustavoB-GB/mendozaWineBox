@@ -1,6 +1,6 @@
 /* Estilo general para la página 2*/
 body {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f9; /* Fondo claro general */
@@ -14,7 +14,7 @@ header {
 }
 
 h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
     font-family: -b-webkit-body
 }
   
