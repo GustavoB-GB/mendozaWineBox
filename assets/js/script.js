@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .catch(error => console.error("Error al cargar los datos:", error));
     }
-    
+
     // Función para cargar imágenes de la galería desde Google Sheets
     function loadGaleria(sheetUrl, callback) {
         fetch(sheetUrl)
@@ -49,39 +49,63 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
         productList.innerHTML = ""; // Limpiar lista de productos
-        const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
-        galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
-        let contador = 0; // Contador para limitar la cantidad de productos mostrados
-
+        const galeriaContainer = document.getElementById("galeria-container");
+        if (galeriaContainer) galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes si existe
+        let contador = 0;
+    
         products.forEach(product => {
             const productCard = document.createElement("div");
             productCard.classList.add("product-card");
-
+    
             contador++;
             const link = `box.html?cat=${contador}`;
-
-            // Crear un enlace que dirija a Google
-            productCard.innerHTML = `
-                <a href="${link}" target="_blank">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
-                    <div class="product-details">
-                        <div class="product-name-price">
-                            <span class="product-name">${product.name}</span>
-                            <span class="product-price">Desde${product.price}</span>
-                        </div>
-                        <span class="product-more">Ver más</span>
-                    </div>
-                </a>
-            `;
-
+    
+            const a = document.createElement("a");
+            a.href = link;
+            a.target = "_blank";
+    
+            const img = document.createElement("img");
+            img.src = product.image;
+            img.alt = product.name;
+            img.loading = "lazy";
+    
+            const details = document.createElement("div");
+            details.className = "product-details";
+    
+            const namePrice = document.createElement("div");
+            namePrice.className = "product-name-price";
+    
+            const nameSpan = document.createElement("span");
+            nameSpan.className = "product-name";
+            nameSpan.textContent = product.name;
+    
+            const priceSpan = document.createElement("span");
+            priceSpan.className = "product-price";
+            priceSpan.textContent = `Desde ${product.price}`;
+    
+            const moreSpan = document.createElement("span");
+            moreSpan.className = "product-more";
+            moreSpan.textContent = "Ver más";
+    
+            namePrice.appendChild(nameSpan);
+            namePrice.appendChild(priceSpan);
+            details.appendChild(namePrice);
+            details.appendChild(moreSpan);
+    
+            a.appendChild(img);
+            a.appendChild(details);
+            productCard.appendChild(a);
+    
             productList.appendChild(productCard);
         });
     }
 
     // Función para mostrar las imágenes de la galería en el DOM
     function displayGaleria(images) {
-        const galeriaContainer = document.getElementById("galeria-container"); // Asegúrate de tener este contenedor en tu HTML
+        const galeriaContainer = document.getElementById("galeria-container");
+        if (!galeriaContainer) return console.warn("No se encontró el contenedor de galería");
         galeriaContainer.innerHTML = ""; // Limpiar el contenedor de imágenes
+
         const productList = document.getElementById("product-list");
         productList.innerHTML = ""; // Limpiar lista de productos
 
@@ -89,8 +113,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const imgElement = document.createElement("img");
             imgElement.src = image;
             imgElement.alt = "Imagen de la galería";
-            imgElement.loading = "lazy"; // Mejora el rendimiento al cargar las imágenes
-            imgElement.classList.add("galeria-image"); // Clase para estilizar las imágenes
+            imgElement.loading = "lazy";
+            imgElement.classList.add("galeria-image");
 
             galeriaContainer.appendChild(imgElement);
         });
@@ -99,30 +123,26 @@ document.addEventListener("DOMContentLoaded", function() {
     // Cargar productos de la hoja de cálculo "box"
     loadProducts(sheetUrls.box, products => {
         boxProducts = products;
-        displayProducts(boxProducts); // Mostrar productos de "box" por defecto
+        displayProducts(boxProducts);
     });
 
     // Cargar las imágenes de la galería
     loadGaleria(sheetUrls.galeria, images => {
         galeriaImages = images;
-    });    
+    });
 
     // Manejar cambio de categoría
     document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
     document.getElementById("filter-all").addEventListener("click", () => displayGaleria(galeriaImages));
 
-    // Funcionalidad del carrusel automático con transición suave
+    // Carrusel automático
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-item');
     const totalSlides = slides.length;
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
-            if (i === index) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
+            slide.classList.toggle('active', i === index);
         });
     }
 
@@ -131,27 +151,19 @@ document.addEventListener("DOMContentLoaded", function() {
         showSlide(currentSlide);
     }
 
-    setInterval(nextSlide, 5000); // Cambia de imagen cada 5 segundos
+    setInterval(nextSlide, 5000);
+    showSlide(currentSlide);
 
-    showSlide(currentSlide); // Muestra la primera imagen inicialmente
-
-    // Botón de WhatsApp flotante
+    // Botón flotante de WhatsApp
     const whatsappButton = document.getElementById('whatsapp-float');
     const footer = document.querySelector('footer');
 
-    // Función para verificar si el botón debe mostrarse o no
     function checkButtonVisibility() {
         const footerRect = footer.getBoundingClientRect();
         const footerVisible = (footerRect.top < window.innerHeight) && (footerRect.bottom >= 0);
-
-        if (footerVisible) {
-            whatsappButton.style.display = 'none';
-        } else {
-            whatsappButton.style.display = 'flex';
-        }
+        whatsappButton.style.display = footerVisible ? 'none' : 'flex';
     }
 
     window.addEventListener('scroll', checkButtonVisibility);
-
     checkButtonVisibility();
 });
