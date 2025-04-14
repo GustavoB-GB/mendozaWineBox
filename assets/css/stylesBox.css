@@ -424,7 +424,7 @@ html{
 
 @media (max-width: 1090px) {
     .product-label {
-        right: -16px;
+        right: -0px;
     }
 
     #product-list {
@@ -449,9 +449,7 @@ html{
     .product-card img {
         height: 220px; /* Ajusta la altura de la imagen en pantallas pequeñas */
         margin-top: 15px;
-        margin-left: 15px;
         border-radius: 10px;
-        max-width: 90%;
     }
 }
 
