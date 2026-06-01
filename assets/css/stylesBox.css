@@ -77,13 +77,20 @@ header {
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
-  background-image: url('assets/images/favicon/favicon-32x32.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.9;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--cream);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  white-space: nowrap;
+  user-select: none;
+}
+.logo span {
+  color: var(--gold-light);
+  font-style: normal;
+  font-weight: 300;
 }
 
 .navbar ul {
@@ -129,6 +136,90 @@ header {
   text-align: center;
   background-color: var(--cream);
   min-height: 400px;
+}
+
+/* ── Card entrance animation ── */
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-card {
+  animation: cardFadeUp 0.45s ease both;
+}
+
+.product-card:nth-child(1)  { animation-delay: 0.05s; }
+.product-card:nth-child(2)  { animation-delay: 0.10s; }
+.product-card:nth-child(3)  { animation-delay: 0.15s; }
+.product-card:nth-child(4)  { animation-delay: 0.20s; }
+.product-card:nth-child(5)  { animation-delay: 0.25s; }
+.product-card:nth-child(6)  { animation-delay: 0.30s; }
+.product-card:nth-child(7)  { animation-delay: 0.35s; }
+.product-card:nth-child(8)  { animation-delay: 0.40s; }
+
+/* ── Skeleton loader ── */
+.skeleton-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 220px;
+  display: flex;
+}
+
+.skeleton-img {
+  width: 38%;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #e8e2d9 25%, #f0ebe3 50%, #e8e2d9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeleton-body {
+  flex: 1;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.skeleton-line {
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e8e2d9 25%, #f0ebe3 50%, #e8e2d9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.skeleton-line.short { width: 45%; }
+.skeleton-line.price { width: 30%; height: 20px; margin-top: auto; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Section title ── */
+.section-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink);
+  text-align: center;
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  text-align: center;
+  margin: 0 0 28px;
 }
 
 /* ── Product List ── */
