@@ -263,7 +263,6 @@ header {
   font-weight: 500;
   color: var(--stone);
   cursor: default;
-  white-space: nowrap;
 }
 
 .product-more {
@@ -430,6 +429,15 @@ header {
   .galeria { column-count: 2; }
   .product-card img { height: 160px; }
   .navbar { padding: 0 16px; }
+  .product-name-price {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .product-name { font-size: 17px; padding-bottom: 4px; margin-bottom: 2px; }
+  .product-price { font-size: 13px; }
+  .product-more { font-size: 11px; }
+  .product-details { padding: 10px 12px 14px; gap: 4px; }
 }
 
 @media (max-width: 630px) {
