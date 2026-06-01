@@ -102,6 +102,22 @@ document.addEventListener("DOMContentLoaded", function () {
         return "";
     }
 
+    // Skeleton loader
+    function showSkeletons(count = 4) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = Array.from({ length: count }, () => `
+            <div class="skeleton-card">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line price"></div>
+                </div>
+            </div>
+        `).join('');
+    }
+
     // Función para mostrar los productos en el DOM
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
@@ -175,6 +191,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", checkButtonVisibility);
     checkButtonVisibility();
+
+    // Título de sección
+    const productSection = document.getElementById("productos");
+    if (productSection && !document.querySelector(".section-title")) {
+        const title = document.createElement("h2");
+        title.className = "section-title";
+        title.textContent = "Opciones disponibles";
+        const subtitle = document.createElement("p");
+        subtitle.className = "section-subtitle";
+        subtitle.textContent = `Box ${categoria}`;
+        const productList = document.getElementById("product-list");
+        productSection.insertBefore(subtitle, productList);
+        productSection.insertBefore(title, subtitle);
+    }
+
+    // Mostrar skeletons mientras carga
+    showSkeletons(4);
 
     // Cargar y mostrar los productos
     loadProducts(sheetUrl, displayProducts);
