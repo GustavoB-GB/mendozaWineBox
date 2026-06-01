@@ -183,8 +183,7 @@ header {
 /* Label badge */
 .product-label {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  right: 0px;
   width: 68px;
   height: 68px;
   object-fit: contain;
