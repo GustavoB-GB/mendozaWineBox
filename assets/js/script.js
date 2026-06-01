@@ -45,6 +45,22 @@ document.addEventListener("DOMContentLoaded", function() {
     // Marcar el primer botón por defecto
     document.getElementById("filter-box").classList.add("selected");
 
+    // Skeleton loader
+    function showSkeletons(count = 6) {
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = Array.from({ length: count }, () => `
+            <div class="skeleton-card">
+                <div class="skeleton-img"></div>
+                <div class="skeleton-body">
+                    <div class="skeleton-line"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line short"></div>
+                    <div class="skeleton-line price"></div>
+                </div>
+            </div>
+        `).join('');
+    }
+
     // Función para mostrar los productos en el DOM
     function displayProducts(products) {
         const productList = document.getElementById("product-list");
@@ -119,6 +135,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Mostrar skeletons mientras carga
+    showSkeletons(6);
+
     // Cargar productos de la hoja de cálculo "box"
     loadProducts(sheetUrls.box, products => {
         boxProducts = products;
@@ -131,17 +150,52 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Manejar cambio de categoría
-    document.getElementById("filter-box").addEventListener("click", () => displayProducts(boxProducts));
-    document.getElementById("filter-all").addEventListener("click", () => displayGaleria(galeriaImages));
+    const filterBox = document.getElementById("filter-box");
+    const filterAll = document.getElementById("filter-all");
+
+    filterBox.addEventListener("click", () => {
+        filterBox.classList.add("selected");
+        filterAll.classList.remove("selected");
+        const title = document.querySelector(".section-title");
+        const subtitle = document.querySelector(".section-subtitle");
+        if (title) title.textContent = "Nuestras Cajas";
+        if (subtitle) subtitle.textContent = "Selección de vinos mendocinos";
+        displayProducts(boxProducts);
+    });
+
+    filterAll.addEventListener("click", () => {
+        filterAll.classList.add("selected");
+        filterBox.classList.remove("selected");
+        const title = document.querySelector(".section-title");
+        const subtitle = document.querySelector(".section-subtitle");
+        if (title) title.textContent = "Galería";
+        if (subtitle) subtitle.textContent = "Nuestros productos";
+        displayGaleria(galeriaImages);
+    });
 
     // Carrusel automático
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-item');
     const totalSlides = slides.length;
 
+    // Crear indicadores
+    const indicatorsContainer = document.getElementById("carousel-indicators");
+    if (indicatorsContainer) {
+        slides.forEach((_, i) => {
+            const dot = document.createElement("div");
+            dot.classList.add("carousel-dot");
+            dot.addEventListener("click", () => { currentSlide = i; showSlide(i); });
+            indicatorsContainer.appendChild(dot);
+        });
+    }
+
     function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
+        });
+        // Actualizar dots
+        document.querySelectorAll(".carousel-dot").forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
         });
     }
 
