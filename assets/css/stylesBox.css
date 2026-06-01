@@ -223,7 +223,7 @@ header {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin: 2 0 12px 0;
+  margin: 8px 0 12px 0;
 }
 
 .product-price {
@@ -465,8 +465,15 @@ header {
     width: 100%;
     height: 200px;
   }
-  .product-text { display: none; }
+  .product-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 13px;
+  }
   .product-name { font-size: 20px; }
+  .product-details { padding: 14px 16px 16px; }
   .galeria { column-count: 2; }
 }
 
