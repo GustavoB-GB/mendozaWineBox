@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
         7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1465484676&single=true&output=csv",
         8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1297030853&single=true&output=csv",
         9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=611766352&single=true&output=csv",
-        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=150951508&single=true&output=csv"
+        10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=150951508&single=true&output=csv",
+        11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1344073102&single=true&output=csv",
+        12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1344073102&single=true&output=csv",
+        13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTVPHcjwMlbwdC81Mgza3MODzaci907Ee79HUYbdaD7UVeHvHADi4RFpV-dVHkWNaAxgLbQX2suIAdR/pub?gid=1633395316&single=true&output=csv"
     };
 
     const sheetUrl = sheetUrls[categoria] || "";
@@ -39,16 +42,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const closeModal = document.querySelector(".close");
     const modalEtiqueta = document.getElementById("modal-etiqueta");
 
+    // Parser CSV que respeta campos entre comillas (con comas o emojis adentro)
+    function parseCSVRow(row) {
+        const result = [];
+        let current = "";
+        let inQuotes = false;
+        for (let i = 0; i < row.length; i++) {
+            const ch = row[i];
+            if (ch === '"') {
+                if (inQuotes && row[i + 1] === '"') {
+                    current += '"'; i++;
+                } else {
+                    inQuotes = !inQuotes;
+                }
+            } else if (ch === ',' && !inQuotes) {
+                result.push(current.trim());
+                current = "";
+            } else {
+                current += ch;
+            }
+        }
+        result.push(current.trim());
+        return result;
+    }
+
     // Función para cargar datos desde Google Sheets
     function loadProducts(sheetUrl, callback) {
         fetch(sheetUrl)
             .then(response => response.text())
             .then(data => {
                 const rows = data.split("\n").slice(1);
-                const products = rows.map(row => {
-                    const [name, price, image, description, etiqueta] = row.split(",");
-                    return { name, price, image, description, etiqueta };
-                });
+                const products = rows
+                    .filter(row => row.trim() !== "")
+                    .map(row => {
+                        const cols = parseCSVRow(row);
+                        return {
+                            name:        cols[0] || "",
+                            price:       cols[1] || "",
+                            image:       cols[2] || "",
+                            description: cols[3] || "",
+                            etiqueta:    cols[4] || ""
+                        };
+                    });
                 callback(products);
             })
             .catch(error => console.error("Error al cargar los datos:", error));
@@ -61,6 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return `<img src="assets/images/oferta.png" class="product-label" alt="Oferta">`;
         } else if (etiqueta === "sin stock") {
             return `<img src="assets/images/stock.png" class="product-label" alt="Sin Stock">`;
+        }else if (etiqueta === "nuevo") {
+            return `<img src="assets/images/nuevo.png" class="product-label" alt="nuevo">`;
         }
         return "";
     }
