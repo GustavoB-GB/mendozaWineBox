@@ -329,8 +329,8 @@ header {
   margin-top: auto;
 }
 
-/* ──  ── */
-. {
+/* ── Modal ── */
+.modal {
   display: none;
   position: fixed;
   z-index: 200;
@@ -341,7 +341,7 @@ header {
   padding: 24px;
 }
 
-.-content {
+.modal-content {
   background: var(--white);
   margin: 2% auto;
   padding: 32px;
@@ -355,14 +355,14 @@ header {
   position: relative;
 }
 
-.-content h2 {
+.modal-content h2 {
   font-family: var(--font-display);
   font-size: 32px;
   font-weight: 400;
   margin: 16px 0 8px;
 }
 
-.-content p {
+.modal-content p {
   font-size: 15px;
   font-weight: 400;
   color: var(--stone);
@@ -370,30 +370,31 @@ header {
   margin: 6px 0;
 }
 
-#-price {
+#modal-price {
   font-family: var(--font-display);
   font-size: 22px;
   color: var(--gold);
   font-weight: 400;
 }
 
-.-image-wrapper {
+.modal-image-wrapper {
   position: relative;
   display: inline-block;
   border-radius: var(--radius-md);
   overflow: hidden;
 }
 
-.-image {
+.modal-image {
   max-height: 400px;
   max-width: 100%;
   border-radius: var(--radius-md);
   display: block;
 }
 
-#-etiqueta img {
+#modal-etiqueta img {
   position: absolute;
-  top: 0px;
+  top: 10px;
+  right: 10px;
   width: 72px;
   height: 72px;
   object-fit: contain;
