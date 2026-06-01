@@ -2,7 +2,7 @@
    MENDOZA WINE BOX — stylesBox.css modernizado
    Estilo: Minimalismo editorial / premium
    ========================================= */
- 
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
@@ -12,7 +12,7 @@
   --ink-soft:    #3D3830;
   --gold:        #B89A5A;
   --gold-light:  #D4B97A;
-  --stone:       #8C8275;
+  --stone:       #6B6259;
   --white:       #FDFBF7;
   --border:      rgba(26,23,20,0.12);
 
@@ -117,7 +117,7 @@ header {
   text-align: center;
   padding: 14px 20px;
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 22px;
   font-style: italic;
   letter-spacing: 0.04em;
   border-bottom: 1px solid rgba(184,154,90,0.2);
