@@ -223,7 +223,7 @@ header {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin: 2 0 12px 0;
+  margin: 0 0 12px 0;
 }
 
 .product-price {
@@ -480,4 +480,20 @@ header {
 @media (max-width: 550px) {
   .product-section { padding: 16px 10px 32px; }
   .galeria { column-count: 2; }
+}
+
+/* ── Botón volver al inicio ── */
+.nav-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--gold-light) !important;
+    opacity: 1 !important;
+    font-weight: 500 !important;
+    transition: color var(--transition), gap var(--transition);
+}
+
+.nav-back:hover {
+    color: #fff !important;
+    gap: 10px;
 }
