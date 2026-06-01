@@ -1,7 +1,7 @@
 /* =========================================
    MENDOZA WINE BOX — styles.css modernizado
    Estilo: Minimalismo editorial / premium
-   ========================================= */ 
+   ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -12,7 +12,7 @@
   --ink-soft:    #3D3830;
   --gold:        #B89A5A;
   --gold-light:  #D4B97A;
-  --stone:       #8C8275;
+  --stone:       #6B6259;
   --white:       #FDFBF7;
   --border:      rgba(26,23,20,0.12);
 
@@ -253,6 +253,9 @@ header {
   font-weight: 600;
   color: var(--ink);
   cursor: default;
+  border-bottom: 1px solid rgba(184,154,90,0.25);
+  padding-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .product-price {
