@@ -223,7 +223,7 @@ header {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin: 0 0 12px 0;
+  margin: 2 0 12px 0;
 }
 
 .product-price {
