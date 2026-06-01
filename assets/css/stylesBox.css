@@ -36,6 +36,7 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--cream);
+  overflow-x: hidden;
 }
 
 body {
@@ -46,6 +47,7 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -70,15 +72,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 48px;
+  padding: 0 24px;
   height: 64px;
   max-width: 1400px;
   margin: 0 auto;
+  gap: 16px;
 }
 
 .logo {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   font-style: italic;
   color: var(--cream);
@@ -86,6 +89,7 @@ header {
   line-height: 1;
   white-space: nowrap;
   user-select: none;
+  flex-shrink: 0;
 }
 .logo span {
   color: var(--gold-light);
@@ -98,7 +102,8 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 32px;
+  gap: 20px;
+  flex-shrink: 0;
 }
 
 .navbar ul li a {
@@ -571,7 +576,10 @@ header {
   .footer-content { flex-direction: column; align-items: center; text-align: center; }
   .footer-left { width: 100%; padding-right: 0; }
   .footer-right { justify-content: center; margin-top: 8px; }
-  .navbar { padding: 0 16px; }
+  .navbar { padding: 0 16px; gap: 12px; }
+  .logo { font-size: 16px; }
+  .navbar ul { gap: 12px; }
+  .navbar ul li a { font-size: 12px; }
 }
 
 @media (max-width: 550px) {
