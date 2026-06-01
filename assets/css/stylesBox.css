@@ -40,7 +40,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
   padding: 0;
   background-color: var(--cream);
@@ -97,11 +97,11 @@ header {
 .navbar ul li a {
   color: var(--cream);
   font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
-  opacity: 0.85;
+  opacity: 0.90;
   transition: opacity var(--transition), color var(--transition);
 }
 
@@ -204,7 +204,7 @@ header {
 
 .product-name {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   color: var(--ink);
   border-bottom: 1px solid var(--border);
@@ -214,9 +214,10 @@ header {
 }
 
 .product-text {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--stone);
-  line-height: 1.55;
+  line-height: 1.6;
   flex: 1;
   overflow: hidden;
   display: -webkit-box;
@@ -227,7 +228,7 @@ header {
 
 .product-price {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   color: var(--gold);
   margin-top: auto;
@@ -267,9 +268,10 @@ header {
 }
 
 .modal-content p {
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 400;
   color: var(--stone);
-  line-height: 1.6;
+  line-height: 1.65;
   margin: 6px 0;
 }
 
@@ -389,9 +391,9 @@ header {
 .footer-left p {
   margin: 0;
   line-height: 1.7;
-  font-size: 13.5px;
-  font-weight: 300;
-  color: rgba(245,240,232,0.65);
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(245,240,232,0.75);
 }
 
 .footer-right {
@@ -407,8 +409,8 @@ header {
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: rgba(245,240,232,0.75);
-  font-size: 13px;
+  color: rgba(245,240,232,0.85);
+  font-size: 14px;
   letter-spacing: 0.04em;
   transition: color var(--transition);
 }
