@@ -33,7 +33,7 @@
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   font-family: var(--font-body);
@@ -43,6 +43,7 @@ body {
   background-color: var(--cream);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1, h2, h3 {
@@ -67,15 +68,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 48px;
+  padding: 0 24px;
   height: 64px;
   max-width: 1400px;
   margin: 0 auto;
+  gap: 16px;
 }
 
 .logo {
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   font-style: italic;
   color: var(--cream);
@@ -83,6 +85,7 @@ header {
   line-height: 1;
   white-space: nowrap;
   user-select: none;
+  flex-shrink: 0;
 }
 .logo span {
   color: var(--gold-light);
@@ -95,7 +98,8 @@ header {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 32px;
+  gap: 20px;
+  flex-shrink: 0;
 }
 
 .navbar ul li a {
@@ -552,7 +556,10 @@ header {
   #product-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .galeria { column-count: 2; }
   .product-card img { height: 160px; }
-  .navbar { padding: 0 16px; }
+  .navbar { padding: 0 16px; gap: 12px; }
+  .logo { font-size: 16px; }
+  .navbar ul { gap: 12px; }
+  .navbar ul li a { font-size: 12px; }
   .product-name-price {
     flex-direction: column;
     align-items: flex-start;
