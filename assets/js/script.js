@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
             const a = document.createElement("a");
             a.href = link;
-            a.target = "_blank";
     
             const img = document.createElement("img");
             img.src = product.image;
