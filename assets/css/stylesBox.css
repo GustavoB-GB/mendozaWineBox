@@ -580,18 +580,25 @@ header {
   .galeria { column-count: 2; }
 }
 
+/* ── Logo como link ── */
+a.logo {
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+a.logo:hover {
+  opacity: 0.8;
+}
+
 /* ── Botón volver al inicio ── */
 .nav-back {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--gold-light) !important;
-    opacity: 1 !important;
-    font-weight: 500 !important;
-    transition: color var(--transition), gap var(--transition);
+  color: var(--gold-light) !important;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.10em;
+  transition: color var(--transition);
 }
 
 .nav-back:hover {
-    color: #fff !important;
-    gap: 10px;
+  color: #fff !important;
 }
