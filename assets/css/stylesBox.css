@@ -311,7 +311,7 @@ header {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  margin: 8px 0 12px 0;
+  /*margin: 8px 0 12px 0;*/
 }
 
 .product-price {
