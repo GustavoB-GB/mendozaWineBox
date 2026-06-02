@@ -65,7 +65,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(184,154,90,0.3);
 }
 
 .navbar {
@@ -125,13 +124,7 @@ header {
 /* ── Promo Banner ── */
 .promo {
   background: var(--ink);
-  color: var(--gold-light);
-  text-align: center;
-  padding: 14px 20px;
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-style: italic;
-  letter-spacing: 0.04em;
+  height: 14px;
   border-bottom: 1px solid rgba(184,154,90,0.2);
 }
 
@@ -587,25 +580,18 @@ header {
   .galeria { column-count: 2; }
 }
 
-/* ── Logo como link ── */
-a.logo {
-    text-decoration: none;
-    cursor: pointer;
-    transition: opacity var(--transition);
-}
-a.logo:hover {
-    opacity: 0.8;
-}
-
 /* ── Botón volver al inicio ── */
 .nav-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     color: var(--gold-light) !important;
     opacity: 1 !important;
     font-weight: 500 !important;
-    letter-spacing: 0.10em;
-    transition: color var(--transition);
+    transition: color var(--transition), gap var(--transition);
 }
 
 .nav-back:hover {
     color: #fff !important;
+    gap: 10px;
 }
