@@ -26,11 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    // Actualizar el texto del elemento .promo
-    const promoElement = document.querySelector(".promo");
-    if (promoElement) {
-        promoElement.textContent = `OPCIONES BOX ${categoria}`;
-    }
+    // Título dinámico de la pestaña
+    document.title = `Box ${categoria} — Mendoza Wine Box`;
 
     // Elementos de la ventana modal
     const productModal = document.getElementById("product-modal");
@@ -177,6 +174,9 @@ document.addEventListener("DOMContentLoaded", function () {
     window.onclick = event => {
         if (event.target === productModal) closeModalHandler();
     };
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && productModal.style.display === "block") closeModalHandler();
+    });
 
     // Botón de WhatsApp flotante
     const whatsappButton = document.getElementById("whatsapp-float");
