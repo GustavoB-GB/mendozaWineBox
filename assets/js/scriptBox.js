@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Título dinámico de la pestaña
-    document.title = `Box ${categoria} — Mendoza Wine Box`;
+    document.title = `Box ${categoria} — MendozaWineBox`;
 
     // Elementos de la ventana modal
     const productModal = document.getElementById("product-modal");
